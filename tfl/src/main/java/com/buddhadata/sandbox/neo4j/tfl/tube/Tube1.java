@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018  Scott C. Sosna  ALL RIGHTS RESERVED
+ */
+
 package com.buddhadata.sandbox.neo4j.tfl.tube;
 
 import com.buddhadata.sandbox.neo4j.tfl.tube.enums.Direction;
