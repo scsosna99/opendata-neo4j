@@ -5,11 +5,13 @@
 package com.buddhadata.sandbox.neo4j.tfl.tube.relationship;
 
 import com.buddhadata.sandbox.neo4j.tfl.tube.enums.Direction;
-import com.buddhadata.sandbox.neo4j.tfl.tube.node.Stop;
+import com.buddhadata.sandbox.neo4j.tfl.tube.node.StopNode;
 import org.neo4j.ogm.annotation.*;
 
 /**
- * Created by scsosna on 1/6/18.
+ * Base class containing shared properties of both a route and a segment, which are Neo4J relationships.
+ *
+ * @author Scott C Sosna
  */
 public class RouteSegmentBase {
 
@@ -29,13 +31,13 @@ public class RouteSegmentBase {
      * start/source of the segment
      */
     @StartNode
-    private Stop start;
+    private StopNode start;
 
     /**
      * end/destination of the segment
      */
     @EndNode
-    private Stop end;
+    private StopNode end;
 
     /**
      * Direction of the route segment
@@ -57,8 +59,8 @@ public class RouteSegmentBase {
      * @param direction direction of the segment
      * @param distance distance in meters between the two stops
      */
-    protected RouteSegmentBase(Stop start,
-                               Stop end,
+    protected RouteSegmentBase(StopNode start,
+                               StopNode end,
                                Direction direction,
                                Double distance) {
         this.start = start;
@@ -103,7 +105,7 @@ public class RouteSegmentBase {
      * getter
      * @return starting stop (node) of the segment
      */
-    public Stop getStart() {
+    public StopNode getStart() {
         return start;
     }
 
@@ -111,7 +113,7 @@ public class RouteSegmentBase {
      * setter
      * @param start starting stop (node) of the segment
      */
-    public void setStart(Stop start) {
+    public void setStart(StopNode start) {
         this.start = start;
     }
 
@@ -119,7 +121,7 @@ public class RouteSegmentBase {
      * getter
      * @return ending stop (node) of the segment
      */
-    public Stop getEnd() {
+    public StopNode getEnd() {
         return end;
     }
 
@@ -127,7 +129,7 @@ public class RouteSegmentBase {
      * setter
      * @param end ending stop (node) of the segment
      */
-    public void setEnd(Stop end) {
+    public void setEnd(StopNode end) {
         this.end = end;
     }
 

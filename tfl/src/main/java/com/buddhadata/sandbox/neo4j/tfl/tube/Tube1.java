@@ -5,12 +5,17 @@
 package com.buddhadata.sandbox.neo4j.tfl.tube;
 
 import com.buddhadata.sandbox.neo4j.tfl.tube.enums.Direction;
-import com.buddhadata.sandbox.neo4j.tfl.tube.node.Stop;
+import com.buddhadata.sandbox.neo4j.tfl.tube.enums.RelationshipNodeType;
+import com.buddhadata.sandbox.neo4j.tfl.tube.filter.RelationshipNodePropertyComparison;
+import com.buddhadata.sandbox.neo4j.tfl.tube.node.LineNode;
+import com.buddhadata.sandbox.neo4j.tfl.tube.node.StopNode;
 import com.buddhadata.sandbox.neo4j.tfl.tube.relationship.Route;
 import com.buddhadata.sandbox.neo4j.tfl.tube.relationship.Segment;
 import org.neo4j.ogm.config.Configuration;
+import org.neo4j.ogm.cypher.BooleanOperator;
 import org.neo4j.ogm.cypher.ComparisonOperator;
 import org.neo4j.ogm.cypher.Filter;
+import org.neo4j.ogm.cypher.Filters;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
 import org.neo4j.ogm.transaction.Transaction;
@@ -23,7 +28,9 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * Created by scsosna on 1/5/18.
+ * Loads stops, routes, transfers, and other interesting data downloaded from the TfL API.
+ *
+ * @author Scott C Sosna
  */
 public class Tube1 {
 
@@ -54,11 +61,15 @@ public class Tube1 {
     static private final String DISTANCE_PARAM_LONGITUDE_A = "lon_a";
     static private final String DISTANCE_PARAM_LONGITUDE_B = "lon_b";
 
+    //  Line node query
+    static private final String LINE_QUERY = "MATCH (line:LineNode {name:$name}) RETURN line";
+    static private final String LINE_PARAM_NAME = "name";
+
     //  Segment query information
-    static private final String SEGMENT_QUERY = "match (a {stopId:$orig_stop'}) - [r:Segment {direction:$direction] -> (b {stopId:$dest_stop}) RETURN r";
-    static private final String SEGMENT_PARAM_DESTINATION_STOP = "dest_stop";
+    static private final String SEGMENT_QUERY = "MATCH (a:StopNode {stopId:$startStopId}) - [r:Segment {direction:$direction] -> (b {stopId:$endStopId}) RETURN r";
+    static private final String SEGMENT_PARAM_DESTINATION_STOP = "endStopId";
     static private final String SEGMENT_PARAM_DIRECTION = "direction";
-    static private final String SEGMENT_PARAM_ORIGINATION_STOP = "orig_stop";
+    static private final String SEGMENT_PARAM_ORIGINATION_STOP = "startStopId";
 
 
 
@@ -89,6 +100,7 @@ public class Tube1 {
             session.purgeDatabase();
             txn = session.beginTransaction();
 
+
             //  Make sure the mode supplied is valid.
             if (isModeValid(mode, null)) {
 
@@ -97,6 +109,8 @@ public class Tube1 {
                     System.out.println ("Building route segments for " + line.getId());
                     buildSegment(line.getId(), Direction.Inbound, session);
                     buildSegment(line.getId(), Direction.Outbound, session);
+                    buildRouteSequence (line.getId(), Direction.Inbound, session);
+                    buildRouteSequence (line.getId(), Direction.Outbound, session);
                 });
 
                 //  Now build the routes, using call that retrieves all routes by mode.
@@ -105,9 +119,11 @@ public class Tube1 {
 
                 txn.commit();
                 txn = null;
+
             } else {
                 System.out.println ("Invalid mode specified.");
             }
+
         } finally {
             if (txn != null) {
                 txn.rollback();
@@ -134,8 +150,8 @@ public class Tube1 {
                 cache.clear();
                 line.getRouteSections().forEach (section -> {
                     // The origination and destination stop should already exist, so just retrieve from Neo4j
-                    Stop origin = findStopNode(session, section.getOriginator());
-                    Stop destination = findStopNode(session, section.getDestination());
+                    StopNode origin = findStopNode(session, section.getOriginator());
+                    StopNode destination = findStopNode(session, section.getDestination());
 
                     //   Now create a route relationship between the two.
                     Route route = new Route(line.getId(), section.getName(), origin, destination, Direction.getByCode(section.getDirection()),
@@ -151,6 +167,60 @@ public class Tube1 {
             });
         } catch (ApiException e) {
             System.out.println ("Exception occurred getting route sequence: " + e);
+        }
+
+
+        return true;
+    }
+
+    private boolean buildRouteSequence (String lineName,
+                                        Direction direction,
+                                        Session session) {
+
+        try {
+            //  Get the route sequence for the line and direction.
+            RouteSequence seq = apiLine.lineRouteSequence(lineName, direction.getCode(), null, false);
+
+            //  Get or create each stop listed for the line.
+            Map<GeoPoint, StopNode> all = new HashMap<>(seq.getStations().size());
+            seq.getStations().forEach (stop -> {
+                StopNode stopNode = findOrCreateStopNode(session, stop);
+
+                //  Cache the stop so after all stops exist we can create a sequence
+                GeoPoint point = new GeoPoint();
+                point.setLat(stop.getLat());
+                point.setLon(stop.getLon());
+                all.put (point, stopNode);
+
+                //  Add all the known lines as transfers possible from this stop.
+                stop.getLines().forEach (line -> {
+                    LineNode lineNode = findOrCreateLineNode(line, session);
+                    stopNode.getTransfers().add(lineNode);
+                });
+
+                //  Save the lines added to the node.
+                session.save(stopNode);
+            });
+
+            //  Now that all stations are accounted for, build the complete route segment-by-segment.
+/*
+            seq.getLineStrings().forEach (lineString -> {
+                StopNode start = null;
+                int i = 0;
+                for (GeoPoint point : convertLineString(lineString)) {
+                    StopNode end = all.get(point);
+                    if (start != null) {
+                        Segment segment = new Segment (start, end, direction,
+                            calcDistanceBetweenStops(session, start, end));
+                        session.save(segment);
+                    }
+                    start = end;
+                    i++;
+                }
+            });
+*/
+        } catch (ApiException e) {
+            System.out.println ("Exception building route sequence: " + e);
         }
 
 
@@ -174,21 +244,21 @@ public class Tube1 {
 
             route.getStopPointSequences().forEach (sequence -> {
 
-                final AtomicReference<Stop> start = new AtomicReference<>();
+                final AtomicReference<StopNode> start = new AtomicReference<>();
                 sequence.getStopPoint().forEach (stop -> {
 
                     //  The node is always the end of the segment, either find an existing or create a new one
-                    Stop end = findOrCreateStopNode(session, stop);
+                    StopNode end = findOrCreateStopNode(session, stop);
                     end.getLines().add(lineId);
 
                     //  Needs to be a start node to work with, but the first stop in the sequence of stop points,
                     //  there isn't, so just mark it as the starting point for the next time through, when a
                     //  segment can be created.
-                    Stop startNode = start.get();
+                    StopNode startNode = start.get();
                     if (startNode == null) {
                         start.set(end);
                     } else {
-                        Segment segment = findOrCreateSegment(session, start.get(), end, direction);
+                        findOrCreateSegment(session, start.get(), end, direction);
                         start.set(end);
                     }
                 });
@@ -274,41 +344,17 @@ public class Tube1 {
      * @return a Neo4J segment relationship
      */
     private Segment findOrCreateSegment(Session session,
-                                        Stop start,
-                                        Stop end,
+                                        StopNode start,
+                                        StopNode end,
                                         Direction direction) {
 
-        Segment toReturn = null;
-
-        //  Need to create map to hold parameters.
-        Map<String,Object> params = new HashMap<>(3);
-        params.put (SEGMENT_PARAM_ORIGINATION_STOP, start.getStopId());
-        params.put (SEGMENT_PARAM_DESTINATION_STOP, end.getStopId());
-        params.put (SEGMENT_PARAM_DIRECTION, direction);
-
-        //  Execute query and hope for best.
-//        toReturn = session.queryForObject (Segment.class, SEGMENT_QUERY, params);
-
-        //  If no segment was found, create a new one.
-        if (toReturn == null) {
-            //  Nothing found, so a new relationship.
-            toReturn = new Segment(start, end, direction, calcDistanceBetweenStops(session, start, end));
-            session.save (toReturn);
-        }
-
-
-        return toReturn;
-    }
-/*
-
-
-    Segment toReturn = null;
+        Segment toReturn;
 
         //  Create a filter based on the nodes and direction.
         Filters composite = new Filters();
-        Filter filter = new Filter ("m.stopId", ComparisonOperator.EQUALS, start.getStopId());
+        Filter filter = new Filter ("stopId", new RelationshipNodePropertyComparison(RelationshipNodeType.START, ComparisonOperator.EQUALS, start.getStopId()));
         composite.add(filter);
-        filter = new Filter ("n.stopId", ComparisonOperator.EQUALS, end.getStopId());
+        filter = new Filter ("stopId", new RelationshipNodePropertyComparison(RelationshipNodeType.END, ComparisonOperator.EQUALS, end.getStopId()));
         filter.setBooleanOperator(BooleanOperator.AND);
         composite.add(filter);
         filter = new Filter ("direction", ComparisonOperator.EQUALS, direction);
@@ -317,21 +363,50 @@ public class Tube1 {
 
         //  Query database and, hopefully, only find a single relationship.
         Collection<Segment> segments = session.loadAll (Segment.class, composite);
-        if (segments != null && !segments.isEmpty()) {
 
-            toReturn = segments.toArray(new Segment[segments.size()])[0];
-
+        //  Was anything found?.
+        if (!segments.isEmpty()) {
+            //  Segment found, return it.
+            toReturn = segments.stream().findFirst().get();
         } else {
-
             //  Nothing found, so a new relationship.
             toReturn = new Segment(start, end, direction, calcDistanceBetweenStops(session, start, end));
             session.save (toReturn);
         }
 
+
         return toReturn;
     }
 
-*/
+    /**
+     * Given a line object returned from TfL API, attempt to query a corresponding LineNode from Neo4J, if one doesn't
+     * exist, create a new one and save to the database
+     * @param line TfL Line
+     * @param session Neo4J database session
+     * @return new or existing LineNode
+     */
+    private LineNode findOrCreateLineNode (Identifier line,
+                                           Session session) {
+
+        LineNode toReturn = null;
+
+        //  Need to create map to hold parameter
+        Map<String,Object> params = new HashMap<>(1);
+        params.put (LINE_PARAM_NAME, line.getName());
+
+        //  Execute query and hope for the best
+        toReturn = session.queryForObject (LineNode.class, LINE_QUERY, params);
+
+        //  If line node doesn't exist, create a new one.
+        if (toReturn == null) {
+            toReturn = new LineNode (line.getName());
+            session.save(toReturn);
+        }
+
+
+        return toReturn;
+    }
+
     /**
      * Given a matched stop returned from the TfL API, search the database for a corresponding node; if not found,
      * create a new one
@@ -339,17 +414,17 @@ public class Tube1 {
      * @param stop the TfL stop
      * @return a Neo4J stop node
      */
-    private Stop findOrCreateStopNode(Session session,
-                                      MatchedStop stop) {
+    private StopNode findOrCreateStopNode(Session session,
+                                          MatchedStop stop) {
 
         //  First, attempt to find the stop in the database.
-        Stop toReturn = findStopNode (session, stop.getId());
+        StopNode toReturn = findStopNode (session, stop.getId());
 
         //  Did we find anything?
         if (toReturn == null) {
 
             //  Stop doesn't exist, so create.
-            toReturn = new Stop (stop.getId(), stop.getName(), stop.getZone(), stop.getLon(), stop.getLat());
+            toReturn = new StopNode(stop.getId(), stop.getName(), stop.getZone(), stop.getLon(), stop.getLat());
             session.save(toReturn);
         }
 
@@ -362,18 +437,18 @@ public class Tube1 {
      * @param session Neo4J database session
      * @return a Neo4J stop node if found, otherwise null.
      */
-    private Stop findStopNode(Session session,
-                              String stopId) {
+    private StopNode findStopNode(Session session,
+                                  String stopId) {
 
-        Stop toReturn = null;
+        StopNode toReturn = null;
 
         //  Create a filter based on the stop ID and attempt to from the database
         Filter filter = new Filter("stopId", ComparisonOperator.EQUALS, stopId);
-        Collection<Stop> stops = session.loadAll(Stop.class, filter);
+        Collection<StopNode> stops = session.loadAll(StopNode.class, filter);
         if (stops != null && !stops.isEmpty()) {
 
             //  At least one stop was found, should only be one, so return it.
-            Stop[] array = stops.toArray(new Stop[stops.size()]);
+            StopNode[] array = stops.toArray(new StopNode[stops.size()]);
             toReturn = array[0];
         }
 
@@ -388,8 +463,8 @@ public class Tube1 {
      * @return meters between the two stops
      */
     private double calcDistanceBetweenStops (Session session,
-                                             Stop stopA,
-                                             Stop stopB) {
+                                             StopNode stopA,
+                                             StopNode stopB) {
         return calcDistance (session, stopA.getLatitude(), stopA.getLongitude(), stopB.getLatitude(), stopB.getLongitude());
 
     }
@@ -418,6 +493,29 @@ public class Tube1 {
 
         //  Execute query and hope for best.
         return session.queryForObject (Double.class, DISTANCE_QUERY, params);
+    }
+
+    /**
+     * Convert the line string returned for the line, which lists all stations in order by [latitude,longitude] into something usable.
+     * @param line line string
+     * @return array of 1 or more GeoPoint's
+     */
+    private GeoPoint[] convertLineString (String line) {
+
+        //  First, tokenize into array of strings with each pair of numbers representing a single geographic point.  Note that
+        //  this is specific to the TfL API, with extra []'s on either end that need to be removed.
+        String[] points = line.substring(3, line.length() - 3).split("\\]\\,\\[");
+        GeoPoint[] toReturn = new GeoPoint[points.length];
+        for (int i = 0; i < points.length; i++) {
+            String[] values = points[i].split(",");
+            GeoPoint geo = new GeoPoint();
+            geo.setLon(Double.valueOf(values[0]));
+            geo.setLat(Double.valueOf(values[1]));
+            toReturn[i] = geo;
+        }
+
+
+        return toReturn;
     }
 
     /**

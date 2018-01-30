@@ -4,16 +4,17 @@
 
 package com.buddhadata.sandbox.neo4j.tfl.tube.node;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.Labels;
+import org.neo4j.ogm.annotation.*;
 
 import java.util.*;
 
 /**
  * Neo4j node representing a street.
+ *
+ * @author Scott C Sosna
  */
-public class Stop {
+@NodeEntity
+public class StopNode {
 
     /**
      * latitude (N/S) portion of WGS84 geographic coordinates
@@ -24,6 +25,12 @@ public class Stop {
      * longitude (E/W) portion of WGS84 geographic coordinates
      */
     private Double longitude;
+
+    /**
+     * Lines to which passenger can transfer at this stop.
+     */
+    @Relationship(type = "Transfer", direction = "UNDIRECTED")
+    private List<LineNode> transfers;
 
     /**
      * Label the stop with each of the lines
@@ -56,7 +63,7 @@ public class Stop {
     /**
      * Constructor
      */
-    public Stop() {
+    public StopNode() {
         return;
     }
 
@@ -68,17 +75,18 @@ public class Stop {
      * @param longitude WGS84 longitude coordinate
      * @param latitude WGS84 latitude coordinate
      */
-    public Stop (String stopId,
-                 String stopName,
-                 String zone,
-                 Double longitude,
-                 Double latitude) {
+    public StopNode(String stopId,
+                    String stopName,
+                    String zone,
+                    Double longitude,
+                    Double latitude) {
         this.stopId = stopId;
         this.name = stopName;
         this.zone = zone;
         this.longitude = longitude;
         this.latitude = latitude;
         lines = new HashSet<>();
+        transfers = new ArrayList<>();
     }
 
     /**
@@ -111,6 +119,22 @@ public class Stop {
      */
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    /**
+     * getter
+     * @return collection of lines which passengers can transfer between at this stop
+     */
+    public List<LineNode> getTransfers() {
+        return transfers;
+    }
+
+    /**
+     * setter
+     * @param transfers collection of lines which passengers can transfer between at this stop
+     */
+    public void setTransfers(List<LineNode> transfers) {
+        this.transfers = transfers;
     }
 
     /**
@@ -190,7 +214,7 @@ public class Stop {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Stop stop = (Stop) o;
+        StopNode stop = (StopNode) o;
 
         return stopId != null ? stopId.equals(stop.stopId) : stop.stopId == null;
 

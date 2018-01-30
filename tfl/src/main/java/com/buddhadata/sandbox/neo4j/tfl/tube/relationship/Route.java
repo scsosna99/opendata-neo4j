@@ -5,11 +5,13 @@
 package com.buddhadata.sandbox.neo4j.tfl.tube.relationship;
 
 import com.buddhadata.sandbox.neo4j.tfl.tube.enums.Direction;
-import com.buddhadata.sandbox.neo4j.tfl.tube.node.Stop;
+import com.buddhadata.sandbox.neo4j.tfl.tube.node.StopNode;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 
 /**
- * Created by scsosna on 1/6/18.
+ * Relationship representing the beginning/ending of a TfL route by connecting the two end stops and the direction
+ *
+ * @author Scott C Sosna
  */
 @RelationshipEntity(type = "Route")
 public class Route extends RouteSegmentBase {
@@ -42,8 +44,8 @@ public class Route extends RouteSegmentBase {
      */
     public Route(String lineId,
                  String name,
-                 Stop start,
-                 Stop end,
+                 StopNode start,
+                 StopNode end,
                  Direction direction,
                  Double distance) {
         super (start, end, direction, distance);
