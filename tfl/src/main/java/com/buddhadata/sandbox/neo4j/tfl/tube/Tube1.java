@@ -108,9 +108,9 @@ public class Tube1 {
                 getLinesByMode(mode).forEach (line -> {
                     System.out.println ("Building route segments for " + line.getId());
                     buildSegment(line.getId(), Direction.Inbound, session);
-                    buildSegment(line.getId(), Direction.Outbound, session);
+//                    buildSegment(line.getId(), Direction.Outbound, session);  // no need to do both inbound and outbound, just duplicates relationships
                     buildRouteSequence (line.getId(), Direction.Inbound, session);
-                    buildRouteSequence (line.getId(), Direction.Outbound, session);
+//                    buildRouteSequence (line.getId(), Direction.Outbound, session); // no need to do both inbound and outbound, just duplicates relationships
                 });
 
                 //  Now build the routes, using call that retrieves all routes by mode.
@@ -357,9 +357,19 @@ public class Tube1 {
         filter = new Filter ("stopId", new RelationshipNodePropertyComparison(RelationshipNodeType.END, ComparisonOperator.EQUALS, end.getStopId()));
         filter.setBooleanOperator(BooleanOperator.AND);
         composite.add(filter);
-        filter = new Filter ("direction", ComparisonOperator.EQUALS, direction);
-        filter.setBooleanOperator(BooleanOperator.AND);
-        composite.add(filter);
+
+        //  It would probably be technically correct to include direction in the query.  However, there are some cases where
+        //  you'll end up with four segments between two stations instead of two. For example:
+        //      Circle Line:
+        //          Monument to Tower Hill, inbound
+        //          Tower Hill to Monument, outbound
+        //      District Line:
+        //          Tower Hill to Monument, inbound
+        //          Monument to Tower Hill, outbound
+        //  For situations like this, I'm leaving out the direction.
+//        filter = new Filter ("direction", ComparisonOperator.EQUALS, direction);
+//        filter.setBooleanOperator(BooleanOperator.AND);
+//        composite.add(filter);
 
         //  Query database and, hopefully, only find a single relationship.
         Collection<Segment> segments = session.loadAll (Segment.class, composite);
