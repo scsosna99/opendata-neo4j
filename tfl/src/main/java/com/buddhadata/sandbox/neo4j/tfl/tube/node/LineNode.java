@@ -7,9 +7,6 @@ package com.buddhadata.sandbox.neo4j.tfl.tube.node;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
-
-import java.util.List;
 
 /**
  * Node representing a TfL "Line"
@@ -43,7 +40,6 @@ public class LineNode implements Comparable<LineNode> {
      * Constructor
      */
     public LineNode() {
-        return;
     }
 
     /**
@@ -80,8 +76,8 @@ public class LineNode implements Comparable<LineNode> {
 
     /**
      * Implement comparable for sorting the transfers
-     * @param other
-     * @return
+     * @param other other node used in comparison
+     * @return -1, 0, 1 as with all comparables
      */
     public int compareTo (LineNode other) {
         return getName().compareTo(other.getName());

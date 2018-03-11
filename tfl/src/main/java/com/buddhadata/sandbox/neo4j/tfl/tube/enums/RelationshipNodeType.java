@@ -4,8 +4,6 @@
 
 package com.buddhadata.sandbox.neo4j.tfl.tube.enums;
 
-import org.neo4j.ogm.annotation.RelationshipEntity;
-
 /**
  * When querying the relationship node properties, is the start or end node of interest?
  *

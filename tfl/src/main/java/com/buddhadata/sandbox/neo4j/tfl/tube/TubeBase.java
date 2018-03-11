@@ -20,7 +20,6 @@ import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
 import org.neo4j.ogm.transaction.Transaction;
 import uk.gov.tfl.api.client.client.ApiException;
-import uk.gov.tfl.api.client.client.api.LineApi;
 import uk.gov.tfl.api.client.client.model.*;
 
 import java.lang.Object;
@@ -32,12 +31,7 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * @author Scott C Sosna
  */
-public class Tube1 {
-
-    /**
-     * Implementation for making line API calls.
-     */
-    final private LineApi apiLine;
+abstract public class TubeBase {
 
     /**
      * Cache of valid modes of transport.
@@ -74,24 +68,22 @@ public class Tube1 {
 
 
     //  For the routes, only get regular services, ignore night.
-    static private final List<String> SERVICE_TYPE_REGULAR = Collections.singletonList("Regular");
+    static protected final List<String> SERVICE_TYPE_REGULAR = Collections.singletonList("Regular");
 
 
     /**
      * Constructor
      */
-    public Tube1 () {
+    public TubeBase() {
         //  Define session factory for connecting to Neo4j database
         Configuration configuration = new Configuration.Builder().uri(SERVER_URI).credentials(SERVER_USERNAME, SERVER_PASSWORD).build();
         sessionFactory = new SessionFactory(configuration, "com.buddhadata.sandbox.neo4j.tfl.tube.node", "com.buddhadata.sandbox.neo4j.tfl.tube.relationship");
-
-        apiLine = new LineApi();
     }
 
     /**
      * Do the actual work
      */
-    private void process (String mode) {
+    protected void process (String mode) {
 
         Transaction txn = null;
         try {
@@ -104,21 +96,25 @@ public class Tube1 {
             //  Make sure the mode supplied is valid.
             if (isModeValid(mode, null)) {
 
-                //  Build route segments for all lines of the specified mode.
-                getLinesByMode(mode).forEach (line -> {
-                    System.out.println ("Building route segments for " + line.getId());
-                    buildSegment(line.getId(), Direction.Inbound, session);
+                try {
+                    //  Build route segments for all lines of the specified mode.
+                    getLinesByMode(mode).forEach(line -> {
+                        System.out.println("Building route segments for " + line.getId());
+                        buildSegment(line.getId(), Direction.Inbound, session);
 //                    buildSegment(line.getId(), Direction.Outbound, session);  // no need to do both inbound and outbound, just duplicates relationships
-                    buildRouteSequence (line.getId(), Direction.Inbound, session);
+                        buildRouteSequence(line.getId(), Direction.Inbound, session);
 //                    buildRouteSequence (line.getId(), Direction.Outbound, session); // no need to do both inbound and outbound, just duplicates relationships
-                });
+                    });
 
-                //  Now build the routes, using call that retrieves all routes by mode.
-                buildRoute(mode, session);
+                    //  Now build the routes, using call that retrieves all routes by mode.
+                    buildRoute(mode, session);
 
 
-                txn.commit();
-                txn = null;
+                    txn.commit();
+                    txn = null;
+                } catch (Exception e) {
+                    System.out.println ("Something bad happend: " + e);
+                }
 
             } else {
                 System.out.println ("Invalid mode specified.");
@@ -142,7 +138,7 @@ public class Tube1 {
 
         try {
             // Retrieve the line routes for the line provided
-            List<Line> lines = apiLine.lineRouteByMode(Collections.singletonList(mode), SERVICE_TYPE_REGULAR);
+            List<Line> lines = getLineRouteByMode (mode);
 
             //  Process the lines and create routes for each section.
             Set<Route> cache = new HashSet<>(20);
@@ -165,7 +161,7 @@ public class Tube1 {
                     }
                 });
             });
-        } catch (ApiException e) {
+        } catch (Exception e) {
             System.out.println ("Exception occurred getting route sequence: " + e);
         }
 
@@ -179,7 +175,7 @@ public class Tube1 {
 
         try {
             //  Get the route sequence for the line and direction.
-            RouteSequence seq = apiLine.lineRouteSequence(lineName, direction.getCode(), null, false);
+            RouteSequence seq = getLineRouteSequence(lineName, direction);
 
             //  Get or create each stop listed for the line.
             Map<GeoPoint, StopNode> all = new HashMap<>(seq.getStations().size());
@@ -219,7 +215,7 @@ public class Tube1 {
                 }
             });
 */
-        } catch (ApiException e) {
+        } catch (Exception e) {
             System.out.println ("Exception building route sequence: " + e);
         }
 
@@ -240,7 +236,7 @@ public class Tube1 {
 
         try {
             //  Get the stops on the route.
-            RouteSequence route  = apiLine.lineRouteSequence(lineId, direction.getCode(), null, false);
+            RouteSequence route  = getLineRouteSequence(lineId, direction);
 
             route.getStopPointSequences().forEach (sequence -> {
 
@@ -263,26 +259,12 @@ public class Tube1 {
                     }
                 });
             });
-        } catch (ApiException e) {
+        } catch (Exception e) {
             System.out.println ("Exception occurred getting route sequence: " + e);
         }
 
 
         return true;
-    }
-    /**
-     * Get the lines for a given mode.
-     * @param modeName mode name of interest
-     * @return list of lines or null if an exception occurred
-     */
-    private Collection<Line> getLinesByMode (String modeName) {
-        try {
-            //  Return all lines for the specified transport mode.
-            return apiLine.lineGetByMode(Collections.singletonList(modeName));
-        } catch (ApiException e) {
-            System.out.println ("getLinesByMode Exception: " + e);
-            return null;
-        }
     }
 
     /**
@@ -296,8 +278,8 @@ public class Tube1 {
                 if (modes == null || modes.isEmpty()) {
                     modes = new HashMap<>();
                     try {
-                        apiLine.lineMetaModes().forEach (mode -> modes.put(mode.getModeName(), mode));
-                    } catch (ApiException e) {
+                        getLineMetaModes().forEach (mode -> modes.put(mode.getModeName(), mode));
+                    } catch (Exception e) {
                         System.out.println ("getModes Exception: " + e);
                     }
                 }
@@ -312,7 +294,7 @@ public class Tube1 {
      * Determine if the mode provided by name is valid
      * @param modeName name of the mode
      * @param template characteristics of the mode to make sure it's defined as needed/expected
-     * @return
+     * @return flag indicating if mode is valid or not
      */
     private boolean isModeValid (String modeName,
                                  Mode template) {
@@ -398,7 +380,7 @@ public class Tube1 {
     private LineNode findOrCreateLineNode (Identifier line,
                                            Session session) {
 
-        LineNode toReturn = null;
+        LineNode toReturn;
 
         //  Need to create map to hold parameter
         Map<String,Object> params = new HashMap<>(1);
@@ -529,16 +511,33 @@ public class Tube1 {
     }
 
     /**
-     * Program main program
-     * @param args
+     * Get the lines for a given mode.
+     * @param modeName mode name of interest
+     * @return list of lines or null if an exception occurred
      */
-    public static void main (String[] args) {
+    abstract protected Collection<Line> getLinesByMode (String modeName) throws Exception;
 
-        if (args.length > 0) {
-            new Tube1().process(args[0]);
-        } else {
-            System.out.print ("Mode required from command line.");
-        }
+    /**
+     * Get line routes by mode
+     * @param mode mode name of interest
+     * @return list of lines
+     * @throws ApiException thrown when the API call fails
+     */
+    abstract protected List<Line> getLineRouteByMode (String mode) throws Exception;
 
-    }
+    /**
+     * Get a specific route sequence
+     * @param lineName name of the line to get the route sequence
+     * @param direction which direction of the route
+     * @return RouteSequence information
+     * @throws ApiException throws when the API call fails
+     */
+    abstract protected RouteSequence getLineRouteSequence (String lineName,
+                                                           Direction direction) throws Exception;
+
+    /**
+     * Get the allowable modes.
+     * @return list of modes
+     */
+    abstract protected List<Mode> getLineMetaModes() throws Exception;
 }

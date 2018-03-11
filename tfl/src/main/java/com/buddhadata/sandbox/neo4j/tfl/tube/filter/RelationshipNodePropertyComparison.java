@@ -12,9 +12,7 @@ import org.neo4j.ogm.cypher.function.FilterFunction;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.neo4j.ogm.cypher.ComparisonOperator.EXISTS;
-import static org.neo4j.ogm.cypher.ComparisonOperator.IS_NULL;
-import static org.neo4j.ogm.cypher.ComparisonOperator.IS_TRUE;
+import static org.neo4j.ogm.cypher.ComparisonOperator.*;
 
 /**
  * Filter for filtering based on the start or end node of a relationship.

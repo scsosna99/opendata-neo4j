@@ -6,7 +6,7 @@ package com.buddhadata.sandbox.neo4j.tfl.tube.relationship;
 
 import com.buddhadata.sandbox.neo4j.tfl.tube.enums.Direction;
 import com.buddhadata.sandbox.neo4j.tfl.tube.node.StopNode;
-import org.neo4j.ogm.annotation.*;
+import org.neo4j.ogm.annotation.RelationshipEntity;
 
 /**
  * Relationship representing a segment/direct connection between two stops of a TfL route, useful for all modes.
@@ -20,7 +20,6 @@ public class Segment extends RouteSegmentBase {
      * Constructor
      */
     public Segment() {
-        return;
     }
 
     /**

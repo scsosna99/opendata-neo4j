@@ -6,7 +6,10 @@ package com.buddhadata.sandbox.neo4j.tfl.tube.relationship;
 
 import com.buddhadata.sandbox.neo4j.tfl.tube.enums.Direction;
 import com.buddhadata.sandbox.neo4j.tfl.tube.node.StopNode;
-import org.neo4j.ogm.annotation.*;
+import org.neo4j.ogm.annotation.EndNode;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.StartNode;
 
 /**
  * Base class containing shared properties of both a route and a segment, which are Neo4J relationships.
@@ -49,7 +52,6 @@ public class RouteSegmentBase {
      * Constructor
      */
     public RouteSegmentBase() {
-        return;
     }
 
     /**
