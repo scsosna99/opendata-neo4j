@@ -13,7 +13,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
  *
  * @author Scott C Sosna
  */
-@RelationshipEntity(type = "Segment")
+@RelationshipEntity(type = "SEGMENT")
 public class Segment extends RouteSegmentBase {
 
     /**

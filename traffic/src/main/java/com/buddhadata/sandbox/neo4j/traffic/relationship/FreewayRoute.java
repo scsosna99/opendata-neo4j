@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 /**
  * Neo4j relationship for freeway roads/routes.
  */
-@RelationshipEntity(type = "Freeway")
+@RelationshipEntity(type = "FREEWAY")
 public class FreewayRoute extends BaseRoute {
 
     /**

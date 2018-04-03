@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 /**
  * Neo4j relationship for a road/route for which the type is unknown/uncoded for.
  */
-@RelationshipEntity(type = "Unknown")
+@RelationshipEntity(type = "UNKNOWN")
 public class UnknownRoute extends BaseRoute {
 
     /**

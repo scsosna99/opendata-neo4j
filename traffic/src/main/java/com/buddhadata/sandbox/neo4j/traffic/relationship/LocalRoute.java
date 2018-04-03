@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 /**
  * Neo4j relationship for local roads/routes.
  */
-@RelationshipEntity(type = "Local")
+@RelationshipEntity(type = "LOCAL")
 public class LocalRoute extends BaseRoute {
 
     /**

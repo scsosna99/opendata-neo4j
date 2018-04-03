@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 /**
  * Neo4j relationship for private roads/routes.
  */
-@RelationshipEntity(type = "Private")
+@RelationshipEntity(type = "PRIVATE")
 public class PrivateRoute extends BaseRoute {
 
     /**

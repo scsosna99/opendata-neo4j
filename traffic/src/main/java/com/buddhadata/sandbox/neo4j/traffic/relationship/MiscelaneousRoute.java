@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 /**
  * Neo4j relationship for miscelaneous roads/routes.
  */
-@RelationshipEntity(type = "Miscelaneous")
+@RelationshipEntity(type = "MISCELANEOUS")
 public class MiscelaneousRoute extends BaseRoute {
 
     /**

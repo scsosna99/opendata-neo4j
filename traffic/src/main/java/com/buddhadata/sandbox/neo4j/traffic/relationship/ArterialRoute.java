@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 /**
  * Neo4j relationship for arterial roads/routes.
  */
-@RelationshipEntity(type = "Arterial")
+@RelationshipEntity(type = "ARTERIAL")
 public class ArterialRoute extends BaseRoute {
 
     /**

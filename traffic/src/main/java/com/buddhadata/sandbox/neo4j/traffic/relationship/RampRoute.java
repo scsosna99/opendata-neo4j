@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 /**
  * Neo4j relationship for ramps.
  */
-@RelationshipEntity(type = "Ramp")
+@RelationshipEntity(type = "RAMP")
 public class RampRoute extends BaseRoute {
 
     /**

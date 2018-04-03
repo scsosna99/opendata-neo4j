@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 /**
  * Neo4j relationship for primary roads/routes.
  */
-@RelationshipEntity(type = "Primary")
+@RelationshipEntity(type = "PRIMARY")
 public class PrimaryRoute extends BaseRoute {
 
     /**
