@@ -1,0 +1,18 @@
+MATCH(n) RETURN (n)
+-shows multiple routes of different/same type between source/destination
+
+MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a] -> (d:StreetNode {streetName:"Hazelden Lane"}) RETURN s,d
+MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a:PRIMARY] -> (d:StreetNode {streetName:"Hazelden Lane"}) RETURN s,d
+MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a:ARTERIAL] -> (d:StreetNode {streetName:"Hazelden Lane"}) RETURN s,d
+-find routes between two neighboring points
+
+MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a] -> (d:StreetNode {streetName:"Oxford St W"}) RETURN s,d
+MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a*0..2] -> (d:StreetNode {streetName:"Oxford St W"}) RETURN s,d
+MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a*0..5] -> (d:StreetNode {streetName:"Oxford St W"}) RETURN s,d
+-find routes between two connected/not neighboring points
+
+MATCH (s:StreetNode {streetName:'Queens Ave'}), (e:StreetNode {streetName:'Wharncliffe Rd N'}) , p = shortestPath ((s)-[*]-(e)) RETURN p
+MATCH (s:StreetNode {streetName:'Wonderland Rd S'}), (e:StreetNode {streetName:'Rectory St'}) , p = shortestPath ((s)-[*]-(e)) RETURN p
+MATCH (s:StreetNode {streetName:'Wonderland Rd S'}), (e:StreetNode {streetName:'Pine St'}) , p = shortestPath ((s)-[*]-(e)) RETURN p
+MATCH (s:StreetNode {streetName:'Preston St'}), (e:StreetNode {streetName:'Roxburgh Rd'}) , p = shortestPath ((s)-[*]-(e)) RETURN p
+-find shortest route between two points

@@ -1,0 +1,29 @@
+MATCH(n) RETURN (n)
+-shows multiple routes of different/same type between source/destination
+
+MATCH (n:StopNode)-[:ROUTE]-(m:StopNode) return n,m
+--shows the distinct routes defined by TfL
+
+MATCH (n:northern) RETURN n
+MATCH (n:piccadilly) RETURN n
+---shows the individual stops/segments of the line
+
+MATCH (s:StopNode {stopId:"940GZZLUCGN"}), (t:StopNode {stopId:"940GZZLUMVL"}), p = shortestPath ((s)-[:SEGMENT*]-(t)) RETURN p
+-Covent Garden to Maida Vale
+
+MATCH (b:StopNode {name:"North Acton Underground Station"}), (e:StopNode {name:"Stanmore Underground Station"}), p = (b)-[:SEGMENT*..15]-(e) RETURN p
+MATCH (b:StopNode {name:"North Acton Underground Station"}), (e:StopNode {name:"Stanmore Underground Station"}), p = (b)-[:SEGMENT*..16]-(e) RETURN p
+MATCH (b:StopNode {name:"North Acton Underground Station"}), (e:StopNode {name:"Stanmore Underground Station"}), p = (b)-[:SEGMENT*..15]-(e) RETURN COUNT(p)
+MATCH (b:StopNode {name:"North Acton Underground Station"}), (e:StopNode {name:"Stanmore Underground Station"}), p = (b)-[:SEGMENT*..16]-(e) RETURN COUNT(p)
+MATCH (b:StopNode {name:"North Acton Underground Station"}), (e:StopNode {name:"Stanmore Underground Station"}), p = (b)-[s:SEGMENT*..20]-(e)
+WITH REDUCE (dist=0, seg IN s | dist + seg.distance) AS dist_sum, p
+RETURN length (p), dist_sum AS total_dist
+ORDER BY total_dist
+--playing around with routes between North Acton and Stanmore
+
+MATCH (b:StopNode {name:"Easling Broadway Underground Station"}), (e:StopNode {name:"Warren Street Underground Station"}), p = (b)-[s:SEGMENT*..25]-(e)
+WITH REDUCE (dist=0, seg IN s | dist + seg.distance) AS dist_sum, p
+RETURN length (p), dist_sum AS total_dist
+ORDER BY total_dist
+
+

@@ -188,11 +188,11 @@ abstract public class TubeBase {
                 point.setLon(stop.getLon());
                 all.put (point, stopNode);
 
-                //  Add all the known lines as transfers possible from this stop.
-                stop.getLines().forEach (line -> {
-                    LineNode lineNode = findOrCreateLineNode(line, session);
-                    stopNode.getTransfers().add(lineNode);
-                });
+//                //  Add all the known lines as transfers possible from this stop.
+//                stop.getLines().forEach (line -> {
+//                    LineNode lineNode = findOrCreateLineNode(line, session);
+//                    stopNode.getTransfers().add(lineNode);
+//                });
 
                 //  Save the lines added to the node.
                 session.save(stopNode);

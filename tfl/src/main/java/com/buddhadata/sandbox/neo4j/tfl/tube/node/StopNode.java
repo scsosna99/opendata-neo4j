@@ -29,7 +29,7 @@ public class StopNode {
     /**
      * Lines to which passenger can transfer at this stop.
      */
-    @Relationship(type = "Transfer", direction = "UNDIRECTED")
+    @Relationship(type = "TRANSFER", direction = "UNDIRECTED")
     private List<LineNode> transfers;
 
     /**
@@ -86,7 +86,7 @@ public class StopNode {
         this.longitude = longitude;
         this.latitude = latitude;
         lines = new HashSet<>();
-        transfers = new ArrayList<>();
+//        transfers = new ArrayList<>();
     }
 
     /**
@@ -125,17 +125,17 @@ public class StopNode {
      * getter
      * @return collection of lines which passengers can transfer between at this stop
      */
-    public List<LineNode> getTransfers() {
-        return transfers;
-    }
+//    public List<LineNode> getTransfers() {
+//        return transfers;
+//    }
 
     /**
      * setter
      * @param transfers collection of lines which passengers can transfer between at this stop
      */
-    public void setTransfers(List<LineNode> transfers) {
-        this.transfers = transfers;
-    }
+//    public void setTransfers(List<LineNode> transfers) {
+//        this.transfers = transfers;
+//    }
 
     /**
      * getter
