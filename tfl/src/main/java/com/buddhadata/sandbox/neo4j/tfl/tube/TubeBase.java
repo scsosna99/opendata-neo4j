@@ -447,6 +447,7 @@ abstract public class TubeBase {
 
         return toReturn;
     }
+
     /**
      * Calculate the distance in meters between two stops.
      * @param session Neo4J database session

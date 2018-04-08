@@ -45,9 +45,17 @@
         <processorPath useClasspath="true" />
         <module name="tfl" />
       </profile>
+      <profile default="false" name="Annotation profile for filings" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="filings" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="client" target="1.7" />
+      <module name="filings" target="1.8" />
       <module name="neo4j" target="1.8" />
       <module name="tfl" target="1.8" />
       <module name="tflmsg" target="1.5" />

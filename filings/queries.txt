@@ -1,0 +1,5 @@
+MATCH (f:Filing)-[]->(c:Client) RETURN c.name, count(f), sum(f.amount) ORDER BY count(f) DESC
+
+MATCH (f:Filing)-[]->(r:Registrant) RETURN r.name, count(f), sum(f.amount) ORDER BY count(f) DESC
+
+MATCH (f:Filing)-[]->(i:Issue) RETURN i.code, count(f), sum (f.amount) ORDER BY count(f) DESC
