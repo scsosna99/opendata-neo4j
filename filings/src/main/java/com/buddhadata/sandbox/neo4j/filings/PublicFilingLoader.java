@@ -21,8 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Run TFL demo based on local files
- *
  * @author Scott C Sosna
  */
 public class PublicFilingLoader {
@@ -93,7 +91,9 @@ public class PublicFilingLoader {
                     filing.setRegistrant(findOrCreateRegistrant(session, one.getRegistrant()));
 
                     //  Get the client and assign to the filing
-                    filing.setClient(findOrCreateClient(session, one.getClient()));
+                    Client client = findOrCreateClient(session, one.getClient());
+                    client.getFilings().add(filing);
+                    session.save(client);
 
                     //  Make sure a lobbyist node exists for all lobbyists associated with filing.
                     if (one.getLobbyists() != null && one.getLobbyists().getLobbyist() != null) {

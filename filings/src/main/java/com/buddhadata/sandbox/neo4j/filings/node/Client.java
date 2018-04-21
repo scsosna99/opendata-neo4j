@@ -7,6 +7,10 @@ package com.buddhadata.sandbox.neo4j.filings.node;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Node representing a client who's lobbying (lobbying done by a registrant
@@ -73,6 +77,9 @@ public class Client extends BaseNode {
      */
     private String statePBB;
 
+    @Relationship (type = "FILED")
+    private List<Filing> filings;
+
     /**
      * Constructor
      * @param clientId
@@ -107,6 +114,7 @@ public class Client extends BaseNode {
         this.statePBB = normalizeString (statePBB);
         this.selfFilerInd = selfFilerInd;
         this.stateLocalGovtInd = stateLocalGovtInd;
+        this.filings = new ArrayList<>();
     }
 
     /**
@@ -283,6 +291,22 @@ public class Client extends BaseNode {
      */
     public void setStatePBB(String statePBB) {
         this.statePBB = statePBB;
+    }
+
+    /**
+     * getter
+     * @return collection of filings
+     */
+    public List<Filing> getFilings() {
+        return filings;
+    }
+
+    /**
+     * setter
+     * @param filings collection of filings
+     */
+    public void setFilings(List<Filing> filings) {
+        this.filings = filings;
     }
 
     @Override

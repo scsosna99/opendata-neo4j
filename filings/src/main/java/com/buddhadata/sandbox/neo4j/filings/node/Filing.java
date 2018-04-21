@@ -61,12 +61,6 @@ public class Filing extends BaseNode {
     private String type;
 
     /**
-     * The organization who actually made the filing on behalf of the registrant
-     */
-    @Relationship (type = "FILED_BY")
-    private Client client;
-
-    /**
      * Government entities for whom the lobbying to directed
      */
     @Relationship(type = "LOBBYING")
@@ -220,22 +214,6 @@ public class Filing extends BaseNode {
      */
     public void setType(String type) {
         this.type = type;
-    }
-
-    /**
-     * getter
-     * @return The organization who actually made the filing on behalf of the registrant
-     */
-    public Client getClient() {
-        return client;
-    }
-
-    /**
-     * setter
-     * @param client The organization who actually made the filing on behalf of the registrant
-     */
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     /**
