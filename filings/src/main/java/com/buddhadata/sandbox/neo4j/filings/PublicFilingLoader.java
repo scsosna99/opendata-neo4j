@@ -6,6 +6,7 @@ package com.buddhadata.sandbox.neo4j.filings;
 
 import com.buddhadata.sandbox.neo4j.filings.node.*;
 import com.buddhadata.sandbox.neo4j.filings.relationship.FilingIssue;
+import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import generated.*;
 import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.session.Session;
@@ -13,12 +14,15 @@ import org.neo4j.ogm.session.SessionFactory;
 import org.neo4j.ogm.transaction.Transaction;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 /**
  * @author Scott C Sosna
@@ -52,6 +56,7 @@ public class PublicFilingLoader {
     static private final String REGISTRANT_PARAM_NAME = "id";
 
 
+    private JAXBContext context;
     /**
      * Session factory for connecting to Neo4j database
      */
@@ -62,6 +67,13 @@ public class PublicFilingLoader {
      * Constructor
      */
     public PublicFilingLoader() {
+
+        //  Only need one JAXBContext for all the files read.
+        try {
+            context = JAXBContext.newInstance("generated");
+        } catch (JAXBException e) {
+            System.out.println ("Exception creating JAXB Context: " + e);
+        }
         //  Define session factory for connecting to Neo4j database
         Configuration configuration = new Configuration.Builder().uri(SERVER_URI).credentials(SERVER_USERNAME, SERVER_PASSWORD).build();
         sessionFactory = new SessionFactory(configuration, "com.buddhadata.sandbox.neo4j.filings.node", "com.buddhadata.sandbox.neo4j.filings.relationship");
@@ -73,61 +85,70 @@ public class PublicFilingLoader {
     private void process () {
 
         Transaction txn = null;
-        try {
+        try (ZipInputStream zis = openZipResource("2018_1.zip")) {
             //  When creating a session, always clean up the database by purging the database.
             Session session = sessionFactory.openSession();
             session.purgeDatabase();
 
-            //  Unmarshall the XML document into objects that are easier to work with.
-            PublicFilings filings = getPublicFilings("2018_1_1_15.xml");
-            if (filings != null) {
-                for (FilingType one : filings.getFiling()) {
-                    //  Make each filing its own transaction
-                    txn = session.beginTransaction();
+            if (zis != null) {
 
-                    Filing filing = createFiling (session, one);
+                //  Process all the files (zip entries) within the zip file (zip input stream)
+                ZipEntry ze = null;
+                while ((ze = zis.getNextEntry()) != null) {
+                    System.out.println ("Processing " + ze.getName());
 
-                    //  Get the registrant and assign to the filing
-                    filing.setRegistrant(findOrCreateRegistrant(session, one.getRegistrant()));
+                    //  Unmarshall the XML document into objects that are easier to work with.
+                    PublicFilings filings = getPublicFilings(zis, ze);
+                    if (filings != null) {
+                        for (FilingType one : filings.getFiling()) {
+                            //  Make each filing its own transaction
+                            txn = session.beginTransaction();
 
-                    //  Get the client and assign to the filing
-                    Client client = findOrCreateClient(session, one.getClient());
-                    client.getFilings().add(filing);
-                    session.save(client);
+                            Filing filing = createFiling(session, one);
 
-                    //  Make sure a lobbyist node exists for all lobbyists associated with filing.
-                    if (one.getLobbyists() != null && one.getLobbyists().getLobbyist() != null) {
-                        for (LobbyistType l : one.getLobbyists().getLobbyist()) {
-                            Lobbyist lobbyist = findOrCreateLobbyist(session, l);
-                            filing.getLobbyists().add(lobbyist);
+                            //  Get the registrant and assign to the filing
+                            filing.setRegistrant(findOrCreateRegistrant(session, one.getRegistrant()));
+
+                            //  Get the client and assign to the filing
+                            Client client = findOrCreateClient(session, one.getClient());
+                            client.getFilings().add(filing);
+                            session.save(client);
+
+                            //  Make sure a lobbyist node exists for all lobbyists associated with filing.
+                            if (one.getLobbyists() != null && one.getLobbyists().getLobbyist() != null) {
+                                for (LobbyistType l : one.getLobbyists().getLobbyist()) {
+                                    Lobbyist lobbyist = findOrCreateLobbyist(session, l);
+                                    filing.getLobbyists().add(lobbyist);
+                                }
+                            }
+
+                            //  Get the government entities referenced in the file.
+                            if (one.getGovernmentEntities() != null) {
+                                for (GovernmentEntityType entity : one.getGovernmentEntities().getGovernmentEntity()) {
+                                    GovernmentEntity ge = findOrCreateEntity(session, entity);
+                                    filing.getEntities().add(ge);
+                                }
+                            }
+
+                            //  Are there issues associated with the filing?
+                            if (one.getIssues() != null && one.getIssues().getIssue() != null) {
+                                for (IssueType iss : one.getIssues().getIssue()) {
+
+                                    //  Need to get the issue.
+                                    Issue issue = findOrCreateIssue(session, iss.getCode());
+
+                                    //  Create relationship between filing/issue for the specific description of issue.
+                                    session.save(new FilingIssue(filing, issue, iss.getSpecificIssue()));
+                                }
+                            }
+
+
+                            //  Upon completion of the filing, resave with the updated info and commit.
+                            session.save(filing);
+                            txn.commit();
+                            txn = null;
                         }
                     }
-
-                    //  Get the government entities referenced in the file.
-                    if (one.getGovernmentEntities() != null) {
-                        for (GovernmentEntityType entity : one.getGovernmentEntities().getGovernmentEntity()) {
-                            GovernmentEntity ge = findOrCreateEntity(session, entity);
-                            filing.getEntities().add(ge);
-                        }
-                    }
-
-                    //  Are there issues associated with the filing?
-                    if (one.getIssues() != null && one.getIssues().getIssue() != null) {
-                        for (IssueType iss : one.getIssues().getIssue()) {
-
-                            //  Need to get the issue.
-                            Issue issue = findOrCreateIssue(session, iss.getCode());
-
-                            //  Create relationship between filing/issue for the specific description of issue.
-                            session.save (new FilingIssue(filing, issue, iss.getSpecificIssue()));
-                        }
-                    }
-
-
-                    //  Upon completion of the filing, resave with the updated info and commit.
-                    session.save(filing);
-                    txn.commit();
-                    txn = null;
                 }
             } else {
                 System.out.println ("No files unmarshalled.");
@@ -144,21 +165,49 @@ public class PublicFilingLoader {
 
     /**
      * Unmarshall the filings data from the original XML
-     * @param fileName name of the file containing the filings data
+     * @param zis the stream from which each entry is read
+     * @param ze the zip file entry containing important information about the zip'ed file
      * @return PublicFilings object with 1 or more filings
      */
-    private PublicFilings getPublicFilings (String fileName) {
+    private PublicFilings getPublicFilings (ZipInputStream zis,
+                                            ZipEntry ze) {
 
         PublicFilings toReturn = null;
-        try (Reader rdr = new InputStreamReader (ClassLoader.getSystemResourceAsStream (fileName), Charset.forName("UTF-16"))) {
-            JAXBContext context = JAXBContext.newInstance("generated");
-            toReturn = (PublicFilings) context.createUnmarshaller().unmarshal(rdr);
+
+        try {
+            //  First, read the bytes for this zip entry.
+            byte[] bytes = new byte[(int) ze.getSize() + 2048];
+            int offset = 0;
+            int read = 0;
+            while ((read = zis.read(bytes, offset, 2048)) >= 0) {
+                offset += read;
+            }
+
+            //  Create a reader to stream the bytes and deserialize the XML.
+            try (Reader rdr = new InputStreamReader (new ByteInputStream(bytes, offset), Charset.forName("UTF-16"))) {
+                toReturn = (PublicFilings) context.createUnmarshaller().unmarshal(rdr);
+            }
         } catch (Exception e) {
             System.out.println ("Exception while unmarshalling: " + e);
         }
 
 
         return toReturn;
+    }
+
+    /**
+     * Open the zip file as a resource which we can return as a stream for processing
+     * @param zipFileName the zip file to process
+     * @return a ZipEntryStream
+     */
+    private ZipInputStream openZipResource (String zipFileName) {
+
+        try {
+            return new ZipInputStream(ClassLoader.getSystemResourceAsStream(zipFileName));
+        } catch (Exception e) {
+            System.out.println ("Exception while retrieving zip file: " + e);
+            return null;
+        }
     }
 
     /**
