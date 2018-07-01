@@ -266,7 +266,7 @@ public class PublicFilingLoader {
         //  Lobbyist names are "surname,first" so break them apart by finding ','
         String name = lobbyist.getLobbyistName();
         int comma = name.indexOf(',');
-        String surname = name.substring(0, comma - 1).toUpperCase();
+        String surname = name.substring(0, comma).toUpperCase();
         String firstName = name.substring (comma + 1).toUpperCase();
 
         //  Create map to hold parameters
