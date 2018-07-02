@@ -149,15 +149,17 @@ abstract public class TubeBase {
                     StopNode origin = findStopNode(session, section.getOriginator());
                     StopNode destination = findStopNode(session, section.getDestination());
 
-                    //   Now create a route relationship between the two.
-                    Route route = new Route(line.getId(), section.getName(), origin, destination, Direction.getByCode(section.getDirection()),
-                            calcDistanceBetweenStops(session, origin, destination));
+                    if (origin != null && destination != null) {
+                        //   Now create a route relationship between the two.
+                        Route route = new Route(line.getId(), section.getName(), origin, destination, Direction.getByCode(section.getDirection()),
+                                calcDistanceBetweenStops(session, origin, destination));
 
-                    //  Have we seen this exact route before?
-                    if (!cache.contains(route)) {
-                        // New route, so save to the database and place in cache.
-                        session.save(route);
-                        cache.add(route);
+                        //  Have we seen this exact route before?
+                        if (!cache.contains(route)) {
+                            // New route, so save to the database and place in cache.
+                            session.save(route);
+                            cache.add(route);
+                        }
                     }
                 });
             });
