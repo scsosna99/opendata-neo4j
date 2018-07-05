@@ -11,3 +11,16 @@ MATCH (n:Client)-[:FILED]->(m:Filing) RETURN n.name, COUNT(m) ORDER BY COUNT(m) 
 MATCH (n:Client)-[:FILED]->(m:Filing)-[:ISSUE]-(i:Issue) RETURN n.name, i.code, count(m) order by count(m) DESC
 
 MATCH (n:Client)-[:FILED]->(m:Filing)-[:ISSUE]-(i:Issue) RETURN i.code, n.name, count(m) order by i.code, count(m) DESC
+
+
+MATCH (c:Client) RETURN COUNT(c)
+
+MATCH (c:Client)-[:FILED]->(f:Filing) RETURN c.name, COUNT(f) ORDER BY COUNT(f) DESC
+
+MATCH (c:Client)-[:FILED]->(f:Filing)-[:LOBBIED_BY]->(l:Lobbyist) RETURN c.name, f.filingId, COUNT(l) ORDER BY c.name, count(l) DESC
+
+MATCH (c:Client)-[:FILED]->(f:Filing)-[:LOBBIED_BY]->(l:Lobbyist) WITH c, f, COUNT(l) as qty RETURN c.name, COUNT(f), AVG(qty) ORDER BY c.name
+
+MATCH (g1:GovernmentEntity)<-[:LOBBYING]-(f1:Filing)-[:LOBBYING]->(g2:GovernmentEntity) RETURN g1.name, g2.name, COUNT(f1) ORDER BY COUNT(f1) DESC, g1.name, g2.name
+
+MATCH (c:Client)-[:FILED]->(f:Filing)-[:LOBBYING]->(g:GovernmentEntity) WITH c, f, g ORDER BY g.name WITH c, f, COLLECT(g.name) AS Names RETURN c.name, Names, COUNT(f), SUM(f.amount) ORDER BY c.name, Names
