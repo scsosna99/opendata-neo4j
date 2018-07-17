@@ -9,7 +9,7 @@ MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a:ARTERIAL] -> (d:StreetNode
 MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a] -> (d:StreetNode {streetName:"Oxford St W"}) RETURN s,d
 MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a*0..2] -> (d:StreetNode {streetName:"Oxford St W"}) RETURN s,d
 MATCH (s:StreetNode {streetName:"Riverside Dr"}) - [a*0..5] -> (d:StreetNode {streetName:"Oxford St W"}) RETURN s,d
--find routes between two connected/not neighboring points
+-find routes between two connected/not neighboring points, has to be at least 0...3 to find anything
 
 MATCH (s:StreetNode {streetName:'Queens Ave'}), (e:StreetNode {streetName:'Wharncliffe Rd N'}) , p = shortestPath ((s)-[*]-(e)) RETURN p
 MATCH (s:StreetNode {streetName:'Wonderland Rd S'}), (e:StreetNode {streetName:'Rectory St'}) , p = shortestPath ((s)-[*]-(e)) RETURN p

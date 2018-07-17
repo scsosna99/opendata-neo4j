@@ -1,3 +1,4 @@
+-- One large Cypher query to load the database
 CREATE (Scott:Person {name:'Scott Christopher', born:1965})
 CREATE (Mike:Person {name:'Michael Blevins', born:1945})
 CREATE (Carol:Person {name:'Carol Maureen', born:1945})
@@ -8,8 +9,8 @@ CREATE (Kelly:Person {name:'Kelly Hadley Leigh', born:1977})
 CREATE (Jesse:Person {name:'Jesse Lucas', born:1977})
 CREATE (Gabe:Person {name:'Gabriel Josiah', born:1979})
 CREATE (Esme:Person {name:'Esme Alexis', born:1981})
-CREATE (Gail:Person {name:'Gail ', born:1942})
-CREATE (Steve:Person {name:'Steve William', born:1950})
+CREATE (Gail:Person {name:'Gail Ann', born:1942})
+CREATE (Steve:Person {name:'Steven Lester', born:1950})
 CREATE
 	(Mike)-[:MARRIED {married:1964, divorced:1973}]->(Carol),
 	(Mike)-[:MARRIED {married:1972, divorced:1992}]->(Gail),
@@ -60,4 +61,5 @@ CREATE
 	(Esme)-[:ATTENDED]->(WIU)
 
 
+-- One example query to do off the data loaded
 match path=(s {name:'Michael Blevins'})-[*]->(u:University {name:'Western Illinois University'}) return path
