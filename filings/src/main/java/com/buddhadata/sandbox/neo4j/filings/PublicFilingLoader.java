@@ -6,7 +6,6 @@ package com.buddhadata.sandbox.neo4j.filings;
 
 import com.buddhadata.sandbox.neo4j.filings.node.*;
 import com.buddhadata.sandbox.neo4j.filings.relationship.FilingIssue;
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import generated.*;
 import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.session.Session;
@@ -15,6 +14,7 @@ import org.neo4j.ogm.transaction.Transaction;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
@@ -85,7 +85,7 @@ public class PublicFilingLoader {
     private void process () {
 
         Transaction txn = null;
-        try (ZipInputStream zis = openZipResource("2018_1.zip")) {
+        try (ZipInputStream zis = openZipResource("2019_2.zip")) {
             //  When creating a session, always clean up the database by purging the database.
             Session session = sessionFactory.openSession();
             session.purgeDatabase();
@@ -104,20 +104,21 @@ public class PublicFilingLoader {
                             //  Make each filing its own transaction
                             txn = session.beginTransaction();
 
-                            Filing filing = createFiling(session, one);
+                            //  Get/create the client
+                            Client client = findOrCreateClient(session, one.getClient());
+                            session.save(client);
+
+                            //  Create the filing
+                            Filing filing = createFiling(session, one, client);
 
                             //  Get the registrant and assign to the filing
-                            filing.setRegistrant(findOrCreateRegistrant(session, one.getRegistrant()));
-
-                            //  Get the client and assign to the filing
-                            Client client = findOrCreateClient(session, one.getClient());
-                            client.getFilings().add(filing);
-                            session.save(client);
+                            Registrant registrant = findOrCreateRegistrant(session, one.getRegistrant(), client);
+                            filing.setRegistrant(registrant);
 
                             //  Make sure a lobbyist node exists for all lobbyists associated with filing.
                             if (one.getLobbyists() != null && one.getLobbyists().getLobbyist() != null) {
                                 for (LobbyistType l : one.getLobbyists().getLobbyist()) {
-                                    Lobbyist lobbyist = findOrCreateLobbyist(session, l);
+                                    Lobbyist lobbyist = findOrCreateLobbyist(session, l, registrant);
                                     filing.getLobbyists().add(lobbyist);
                                 }
                             }
@@ -184,7 +185,7 @@ public class PublicFilingLoader {
             }
 
             //  Create a reader to stream the bytes and deserialize the XML.
-            try (Reader rdr = new InputStreamReader (new ByteInputStream(bytes, offset), Charset.forName("UTF-16"))) {
+            try (Reader rdr = new InputStreamReader (new ByteArrayInputStream(bytes, 0, offset), Charset.forName("UTF-16"))) {
                 toReturn = (PublicFilings) context.createUnmarshaller().unmarshal(rdr);
             }
         } catch (Exception e) {
@@ -215,15 +216,17 @@ public class PublicFilingLoader {
      * new and doesn't already exist.  However, would need to process a whole bunch more data to prove.
      * @param session Neo4J database session
      * @param ft a Filing from the intial source data
+     * @param client for whom the filing was made
      * @return newly-created <code>Filing</code>
      */
     private Filing createFiling (Session session,
-                                 FilingType ft) {
+                                 FilingType ft,
+                                 Client client) {
 
         String amount = ft.getAmount();
         Filing toReturn = new Filing (ft.getID(), ft.getYear(), ft.getReceived().toGregorianCalendar().getTime(),
                 amount != null && !amount.isEmpty() ? Integer.valueOf(amount) : 0,
-                ft.getType(), ft.getPeriod());
+                ft.getType(), ft.getPeriod(), client);
         session.save(toReturn);
         return toReturn;
     }
@@ -260,14 +263,15 @@ public class PublicFilingLoader {
      * @return <code>Lobbyist</code>
      */
     private Lobbyist findOrCreateLobbyist (Session session,
-                                           LobbyistType lobbyist) {
+                                           LobbyistType lobbyist,
+                                           Registrant registrant) {
         Lobbyist toReturn;
 
         //  Lobbyist names are "surname,first" so break them apart by finding ','
         String name = lobbyist.getLobbyistName();
         int comma = name.indexOf(',');
-        String surname = name.substring(0, comma).toUpperCase();
-        String firstName = name.substring (comma + 1).toUpperCase();
+        String surname = name.substring(0, comma).trim().toUpperCase();
+        String firstName = name.substring (comma + 1).trim().toUpperCase();
 
         //  Create map to hold parameters
         Map<String,Object> params = new HashMap<>(2);
@@ -281,7 +285,14 @@ public class PublicFilingLoader {
         if (toReturn == null) {
             toReturn = new Lobbyist(firstName, surname, lobbyist.getLobbyistCoveredGovPositionIndicator(),
                 lobbyist.getOfficialPosition(), lobbyist.getActivityInformation());
+            toReturn.getEmployers().add(registrant);
             session.save (toReturn);
+        } else {
+            //  Is the lobbyist already employed by the registrant?
+            if (!toReturn.getEmployers().contains(registrant)) {
+                toReturn.getEmployers().add(registrant);
+                session.save (toReturn);
+            }
         }
 
 
@@ -338,10 +349,12 @@ public class PublicFilingLoader {
      * Either find an existing or create a new registrant, based on the registrant ID in the source data
      * @param session Neo4J session
      * @param registrant the registrant from the data file
+     * @param client engaged this registrant for lobbying
      * @return <code>Registrant</code>
      */
     private Registrant findOrCreateRegistrant (Session session,
-                                               RegistrantType registrant) {
+                                               RegistrantType registrant,
+                                               Client client) {
 
         //  Execute query and hope for the best
         Registrant toReturn = session.queryForObject (Registrant.class, REGISTRANT_QUERY,
@@ -351,7 +364,13 @@ public class PublicFilingLoader {
         if (toReturn == null) {
             toReturn = new Registrant(registrant.getRegistrantID(), registrant.getRegistrantName(), registrant.getGeneralDescription(),
                     registrant.getAddress(), registrant.getRegistrantCountry(), registrant.getRegistrantPPBCountry());
+            toReturn.getClients().add(client);
             session.save(toReturn);
+        } else {
+            if (!toReturn.getClients().contains(client)) {
+                toReturn.getClients().add(client);
+                session.save(toReturn);
+            }
         }
 
 

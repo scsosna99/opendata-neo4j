@@ -18,7 +18,7 @@ import java.util.List;
  * @author Scott C Sosna
  */
 @NodeEntity
-public class Client extends BaseNode {
+public class Client {
 
     /**
      * Does the client file the disclosures themselves or through a separate registrant
@@ -77,9 +77,6 @@ public class Client extends BaseNode {
      */
     private String statePBB;
 
-    @Relationship (type = "FILED")
-    private List<Filing> filings;
-
     /**
      * Constructor
      * @param clientId
@@ -114,7 +111,6 @@ public class Client extends BaseNode {
         this.statePBB = normalizeString (statePBB);
         this.selfFilerInd = selfFilerInd;
         this.stateLocalGovtInd = stateLocalGovtInd;
-        this.filings = new ArrayList<>();
     }
 
     /**
@@ -293,22 +289,6 @@ public class Client extends BaseNode {
         this.statePBB = statePBB;
     }
 
-    /**
-     * getter
-     * @return collection of filings
-     */
-    public List<Filing> getFilings() {
-        return filings;
-    }
-
-    /**
-     * setter
-     * @param filings collection of filings
-     */
-    public void setFilings(List<Filing> filings) {
-        this.filings = filings;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -326,5 +306,15 @@ public class Client extends BaseNode {
         int result = (int) (clientId ^ (clientId >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+
+    /**
+     * Normalize the string data provided in the source data file
+     * @param original original string to normalize
+     * @return normalized string
+     */
+    private String normalizeString (String original) {
+        return (original != null && !original.isEmpty()) ? original.trim().replace("\r\n", ", ").replace("\n", "  ") : null;
     }
 }

@@ -8,9 +8,7 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import sun.reflect.generics.visitor.Reifier;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +19,7 @@ import java.util.List;
  * @author Scott C Sosna
  */
 @NodeEntity
-public class Filing extends BaseNode {
+public class Filing {
 
     /**
      * Internal Neo4J id of the node
@@ -60,22 +58,25 @@ public class Filing extends BaseNode {
      */
     private String type;
 
+    @Relationship (type="ON_BEHALF_OF")
+    private Client client;
+
     /**
      * Government entities for whom the lobbying to directed
      */
-    @Relationship(type = "LOBBYING")
+    @Relationship(type = "TARGETED_AT")
     private List<GovernmentEntity> entities;
 
     /**
      * The specific lobbyists identified by the liling
      */
-    @Relationship(type = "LOBBIED_BY")
+    @Relationship(type = "ADVOCATING_FOR", direction="INCOMING")
     private List<Lobbyist> lobbyists;
 
     /**
      * The registered entity for whom the filing was made
      */
-    @Relationship(type = "FILED_FOR")
+    @Relationship(type = "FILED", direction="INCOMING")
     private Registrant registrant;
 
     /**
@@ -86,13 +87,15 @@ public class Filing extends BaseNode {
      * @param amount the dollar amount of the filing
      * @param type type of filing
      * @param period the period represented by the filing
+     * @param client for whom the file was made
      */
     public Filing (final String filingId,
                    final int year,
                    final Date receivedOn,
                    final int amount,
                    final String type,
-                   final String period) {
+                   final String period,
+                   final Client client) {
 
         this.filingId = normalizeString (filingId);
         this.year = year;
@@ -100,6 +103,7 @@ public class Filing extends BaseNode {
         this.amount = amount;
         this.type = normalizeString (type);
         this.period = normalizeString (period);
+        this.client = client;
         this.entities = new ArrayList<>();
         this.lobbyists = new ArrayList<>();
     }
@@ -218,6 +222,22 @@ public class Filing extends BaseNode {
 
     /**
      * getter
+     * @return the client for whom the filing was made
+     */
+    public Client getClient() {
+        return client;
+    }
+
+    /**
+     * setter
+     * @param client for whom the filing was made
+     */
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    /**
+     * getter
      * @return The registered entity for whom the filing was made
      */
     public Registrant getRegistrant() {
@@ -254,5 +274,14 @@ public class Filing extends BaseNode {
     @Override
     public int hashCode() {
         return filingId != null ? filingId.hashCode() : 0;
+    }
+
+    /**
+     * Normalize the string data provided in the source data file
+     * @param original original string to normalize
+     * @return normalized string
+     */
+    private String normalizeString (String original) {
+        return (original != null && !original.isEmpty()) ? original.trim().replace("\r\n", ", ").replace("\n", "  ") : null;
     }
 }

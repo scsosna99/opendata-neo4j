@@ -14,7 +14,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
  * @author Scott C Sosna
  */
 @NodeEntity
-public class Issue extends BaseNode {
+public class Issue {
 
     /**
      * Internal Neo4J id of the node
@@ -83,5 +83,14 @@ public class Issue extends BaseNode {
     @Override
     public int hashCode() {
         return code != null ? code.hashCode() : 0;
+    }
+
+    /**
+     * Normalize the string data provided in the source data file
+     * @param original original string to normalize
+     * @return normalized string
+     */
+    private String normalizeString (String original) {
+        return (original != null && !original.isEmpty()) ? original.trim().replace("\r\n", ", ").replace("\n", "  ") : null;
     }
 }

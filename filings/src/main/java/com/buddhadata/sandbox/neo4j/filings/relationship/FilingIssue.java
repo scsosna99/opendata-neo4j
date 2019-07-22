@@ -13,7 +13,7 @@ import org.neo4j.ogm.annotation.*;
  *
  * @author Scott C Sosna
  */
-@RelationshipEntity(type = "ISSUE")
+@RelationshipEntity(type = "ABOUT")
 public class FilingIssue extends BaseRelationship {
 
     /**

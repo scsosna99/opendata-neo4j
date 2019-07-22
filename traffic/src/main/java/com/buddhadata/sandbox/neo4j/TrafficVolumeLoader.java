@@ -109,7 +109,7 @@ public class TrafficVolumeLoader {
             //  Commit the transaction.
             txn.commit();
         } catch (IOException ioe) {
-
+            System.out.println (ioe);
         }
     }
 

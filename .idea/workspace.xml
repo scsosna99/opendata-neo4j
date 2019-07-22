@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75c9d3e4-4112-4668-98e2-be1e1a12ba4d" name="Default" comment="Functionality added to allow running demo without network connection">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/family.cypher" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="75c9d3e4-4112-4668-98e2-be1e1a12ba4d" name="Default" comment="Changed to load all filings contained within zip file">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/neo4j.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client/neo4j.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/filings.iml" beforeDir="false" afterPath="$PROJECT_DIR$/filings/filings.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/filings/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/PublicFilingLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/PublicFilingLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/BaseNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Filing.java" beforeDir="false" afterPath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Filing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/GovernmentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/GovernmentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Issue.java" beforeDir="false" afterPath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Issue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Lobbyist.java" beforeDir="false" afterPath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Lobbyist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Registrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Registrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/FilingIssue.java" beforeDir="false" afterPath="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/FilingIssue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineMode-tube.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineMode-tube.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteMode-tube.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteMode-tube.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-bakerloo-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-bakerloo-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-central-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-central-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-circle-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-circle-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-district-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-district-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-hammersmith-city-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-hammersmith-city-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-jubilee-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-jubilee-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-metropolitan-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-metropolitan-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-northern-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-northern-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-piccadilly-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-piccadilly-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-victoria-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-victoria-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-waterloo-city-inbound.json" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-waterloo-city-inbound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfl/tfl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tfl/tfl.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tflapi/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tflapi/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tflapi/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tflapi/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traffic/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/traffic/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traffic/traffic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/traffic/traffic.iml" afterDir="false" />
     </list>
     <ignored path="neo4j.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,118 +49,128 @@
     <ignored path="$PROJECT_DIR$/tfl/target/" />
     <ignored path="$PROJECT_DIR$/filings/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="neo4j" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PublicFilingLoader.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/PublicFilingLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="2040">
+              <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#16093#16094#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrafficVolumeLoader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="queries.txt" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/filings/queries.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="119" selection-start-line="8" selection-start-column="119" selection-end-line="8" selection-end-column="119" />
-              <folding />
+            <state relative-caret-position="60">
+              <caret line="4" column="6" selection-start-line="4" selection-end-line="4" selection-end-column="97" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queries.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/traffic/queries.txt">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="1069">
+              <caret line="111" column="37" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="family.cypher" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/family.cypher">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/traffic/src/main/resources/traffic_volumes_rawdata.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41426927">
-              <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="1325">
+              <caret line="1615" column="74" lean-forward="true" selection-start-line="1615" selection-start-column="74" selection-end-line="1615" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LineNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/node/LineNode.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filings/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Route.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/relationship/Route.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/traffic/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="615">
+              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TubeBase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="172" column="60" selection-start-line="172" selection-start-column="60" selection-end-line="172" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="330" column="0" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="3675">
+              <caret line="291" selection-start-line="291" selection-end-line="291" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/BaseNode.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Filing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="116" selection-start-line="22" selection-start-column="116" selection-end-line="22" selection-end-column="116" />
-              <folding />
+            <state relative-caret-position="960">
+              <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4657#4658#0" expanded="true" />
+                <element signature="e#4686#4687#0" expanded="true" />
+                <element signature="e#4820#4821#0" expanded="true" />
+                <element signature="e#4856#4857#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/FilingIssue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Lobbyist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+              <folding>
+                <element signature="e#4023#4024#0" expanded="true" />
+                <element signature="e#4055#4056#0" expanded="true" />
+                <element signature="e#4206#4207#0" expanded="true" />
+                <element signature="e#4248#4249#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,33 +188,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GradleLocalSettings">
-    <option name="modificationStamps">
-      <map>
-        <entry key="$PROJECT_DIR$/../../minecraft/forge" value="1467002172000" />
-      </map>
-    </option>
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/LocalRoute.java" />
-        <option value="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/MiscelaneousRoute.java" />
-        <option value="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/PrimaryRoute.java" />
-        <option value="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/PrivateRoute.java" />
         <option value="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/RampRoute.java" />
         <option value="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/SecondaryRoute.java" />
         <option value="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/UnknownRoute.java" />
         <option value="$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/relationship/Route.java" />
         <option value="$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/relationship/Segment.java" />
-        <option value="$PROJECT_DIR$/traffic/queries.txt" />
-        <option value="$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/node/StopNode.java" />
         <option value="$PROJECT_DIR$/tfl/queries.txt" />
         <option value="$PROJECT_DIR$/filings/xsd/filings.xsd" />
-        <option value="$PROJECT_DIR$/filings/pom.xml" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/FilingsLoad.java" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/FilerLoad.java" />
         <option value="$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/PublicFilingLoader.java" />
@@ -192,36 +219,33 @@
         <option value="$PROJECT_DIR$/filings/src/main/java/LobbyistType.java" />
         <option value="$PROJECT_DIR$/filings/src/main/xsd/filings.xsd" />
         <option value="$PROJECT_DIR$/filings/src/main/java/PublicFilingLoader.java" />
-        <option value="$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeBase.java" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/RegistrantNode.java" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/GovernmentEntityNode.java" />
-        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Registrant.java" />
         <option value="$PROJECT_DIR$/filings/src/main/java/generated/FilingType.java" />
-        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Lobbyist.java" />
-        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Issue.java" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/BaseNode.java" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/BaseRelationship.java" />
-        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/FilingIssue.java" />
+        <option value="$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeBase.java" />
+        <option value="$PROJECT_DIR$/filings/queries.txt" />
+        <option value="$PROJECT_DIR$/traffic/queries.txt" />
+        <option value="$PROJECT_DIR$/family.cypher" />
+        <option value="$PROJECT_DIR$/tflapi/pom.xml" />
+        <option value="$PROJECT_DIR$/tfl/pom.xml" />
+        <option value="$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/node/StopNode.java" />
+        <option value="$PROJECT_DIR$/filings/pom.xml" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/GovernmentEntity.java" />
-        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Filing.java" />
+        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Issue.java" />
+        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Registrant.java" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Client.java" />
         <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/PublicFilingLoader.java" />
-        <option value="$PROJECT_DIR$/filings/queries.txt" />
-        <option value="$PROJECT_DIR$/family.cypher" />
+        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/FilingIssue.java" />
+        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Lobbyist.java" />
+        <option value="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Filing.java" />
+        <option value="$PROJECT_DIR$/traffic/pom.xml" />
+        <option value="$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" />
-  <component name="JsBuildToolPackageJson" detection-done="true" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-  </component>
   <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
-    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
@@ -242,7 +266,7 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="filings" />
+          <option name="myItemId" value="tfl" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -252,7 +276,7 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="filings" />
+          <option name="myItemId" value="tfl" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -263,84 +287,52 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2301" />
-    <option name="y" value="118" />
-    <option name="width" value="1680" />
-    <option name="height" value="1861" />
+    <option name="x" value="45" />
+    <option name="y" value="54" />
+    <option name="width" value="1747" />
+    <option name="height" value="2036" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neo4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neo4j" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="copyright.profiles" />
-    <property name="settings.editor.splitter.proportion" value="0.25224328" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/filings/pom.xml" />
-    <property name="aspect.path.notification.shown" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/scsosna/data/src/java/neo4j/filings/src/main/resources/2018_1_1_15.xml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/scsosna/data/src/java/neo4j/tflapi/src/main/java/uk/gov/tfl/api/client/client/ApiException.java" />
+    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin" />
+    <property name="settings.editor.splitter.proportion" value="0.25224328" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/" />
+      <recent name="$PROJECT_DIR$/filings/src/main/resources" />
+      <recent name="$PROJECT_DIR$/tflmsg/src/main/xsd/line" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.buddhadata.sandbox.neo4j.filings" />
       <recent name="" />
       <recent name="com.buddhadata.sandbox.neo4j.filings.messages.v1_00" />
       <recent name="com.buddhadata.sandbox.neo4j.filings.messages.v1" />
       <recent name="uk.gov.tfl.api.client" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/filings/src/main/java" />
-      <recent name="$PROJECT_DIR$/filings/src/main" />
-      <recent name="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.buddhadata.sandbox.neo4j.filings.node" />
@@ -349,238 +341,26 @@
       <recent name="com.buddhadata.sandbox.neo4j.tfl.tube.relationship" />
       <recent name="com.buddhadata.sandbox.neo4j.tfl.tube.node" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/filings/src/main/resources" />
-      <recent name="$PROJECT_DIR$/tflmsg/src/main/xsd/line" />
+      <recent name="$PROJECT_DIR$/filings/src/main/java" />
+      <recent name="$PROJECT_DIR$/filings/src/main" />
+      <recent name="$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TubeViaFile">
-    <configuration default="false" name="TrafficVolumeLoader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.buddhadata.sandbox.neo4j.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.TrafficVolumeLoader" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="traffic" />
-      <envs />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <module name="" />
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="depsClasspath" value="false" />
-      <setting name="passParentEnv" value="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <setting name="launchBrowser" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.TrafficVolumeLoader">
     <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -600,119 +380,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="neo4j" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list />
-            </option>
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
@@ -743,100 +410,196 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloWorld" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.HelloWorld" />
+      <module name="neo4j" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PublicFilingLoader" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.filings.PublicFilingLoader" />
+      <module name="filings" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrafficVolumeLoader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.TrafficVolumeLoader" />
+      <module name="traffic" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.buddhadata.sandbox.neo4j.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2" />
+    </configuration>
+    <configuration name="TubeViaApi" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.tfl.tube.TubeViaApi" />
+      <module name="tfl" />
+      <option name="PROGRAM_PARAMETERS" value="tube" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TubeViaFile" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.tfl.tube.TubeViaFile" />
+      <module name="tfl" />
+      <option name="PROGRAM_PARAMETERS" value="tube" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="false" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="neo4j" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
       <arguments />
       <envs />
-      <method />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
-      <method />
-    </configuration>
-    <configuration default="false" name="TubeViaApi" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.tfl.tube.TubeViaApi" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="tube" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="tfl" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="TubeViaFile" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.tfl.tube.TubeViaFile" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="tube" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="tfl" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="HelloWorld" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.HelloWorld" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="neo4j" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="PublicFilingLoader" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="com.buddhadata.sandbox.neo4j.filings.PublicFilingLoader" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="filings" />
-      <envs />
-      <method />
-    </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.TubeViaApi" />
-      <item index="1" class="java.lang.String" itemvalue="Application.TubeViaFile" />
-      <item index="2" class="java.lang.String" itemvalue="Application.HelloWorld" />
-      <item index="3" class="java.lang.String" itemvalue="Application.PublicFilingLoader" />
-      <item index="4" class="java.lang.String" itemvalue="Application.TrafficVolumeLoader" />
+    <list>
+      <item itemvalue="Application.TubeViaApi" />
+      <item itemvalue="Application.TubeViaFile" />
+      <item itemvalue="Application.HelloWorld" />
+      <item itemvalue="Application.PublicFilingLoader" />
+      <item itemvalue="Application.TrafficVolumeLoader" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.TrafficVolumeLoader" />
+      <list>
+        <item itemvalue="Application.TrafficVolumeLoader" />
       </list>
     </recent_temporary>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
   <component name="StructureViewFactory">
     <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
   </component>
@@ -848,6 +611,7 @@
       <changelist id="75c9d3e4-4112-4668-98e2-be1e1a12ba4d" name="Default" comment="" />
       <created>1515206816397</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1515206816397</updated>
       <workItem from="1515206818203" duration="3488000" />
       <workItem from="1515245575571" duration="4723000" />
@@ -880,110 +644,175 @@
       <workItem from="1526871338951" duration="2207000" />
       <workItem from="1527819954632" duration="1064000" />
       <workItem from="1528599450975" duration="128000" />
+      <workItem from="1528762579732" duration="1860000" />
+      <workItem from="1529804396308" duration="9675000" />
+      <workItem from="1530067908064" duration="2581000" />
+      <workItem from="1530489176634" duration="636000" />
+      <workItem from="1530667091454" duration="1770000" />
+      <workItem from="1530669600684" duration="221000" />
+      <workItem from="1530750631427" duration="938000" />
+      <workItem from="1530755125459" duration="29000" />
+      <workItem from="1531182793650" duration="188000" />
+      <workItem from="1531184601274" duration="503000" />
+      <workItem from="1531607901443" duration="2509000" />
+      <workItem from="1531690169866" duration="2959000" />
+      <workItem from="1531876322742" duration="1897000" />
+      <workItem from="1532049331395" duration="147000" />
+      <workItem from="1534036438749" duration="3855000" />
+      <workItem from="1540697648003" duration="437000" />
+      <workItem from="1540699651115" duration="649000" />
+      <workItem from="1563537273214" duration="3197000" />
+      <workItem from="1563543810329" duration="65000" />
+      <workItem from="1563544407212" duration="51000" />
+      <workItem from="1563567659490" duration="2468000" />
+      <workItem from="1563679583226" duration="11273000" />
     </task>
     <task id="LOCAL-00001" summary="Added copyrights everywhere">
       <created>1516245819455</created>
       <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1516245819455</updated>
     </task>
     <task id="LOCAL-00002" summary="Added filter fnctioning for relationship querying on the beginning and ending nodes.  Main Tube1 program now minimizes segment creation by reusing whereever possible.  Added javadocs that were missing.">
       <created>1517283098449</created>
       <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
       <updated>1517283098449</updated>
     </task>
     <task id="LOCAL-00003" summary="reduce number of duplicate relationships by only mapping inbound and not outbound, since in the majority (all?) cases there is always an inbound/outbound match">
       <created>1517541580422</created>
       <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
       <updated>1517541580422</updated>
     </task>
     <task id="LOCAL-00004" summary="Functionality added to allow running demo without network connection">
       <created>1520735357451</created>
       <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
       <updated>1520735357451</updated>
     </task>
     <task id="LOCAL-00005" summary="Best practice is for upper-case relationship labels">
       <created>1522719859680</created>
       <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
       <updated>1522719859680</updated>
     </task>
     <task id="LOCAL-00006" summary="More updates, created queries">
       <created>1523067690404</created>
       <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
       <updated>1523067690404</updated>
     </task>
     <task id="LOCAL-00007" summary="Changed so relationship to client - FILED -&gt; filings, which makes more sense from a left-to-right perspective, added some more queries">
       <created>1524354650554</created>
       <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
       <updated>1524354650554</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Changed to load all filings contained within zip file">
+      <created>1530070433586</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1530070433586</updated>
+    </task>
+    <task id="LOCAL-00009" summary="parse last name correctly">
+      <created>1530489382362</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1530489382362</updated>
+    </task>
+    <task id="LOCAL-00010" summary="more queries">
+      <created>1530755148597</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1530755148597</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Documented query files a little better after confirming all queries worked as designed.">
+      <created>1531795763801</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1531795763801</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152004000" />
+    <option name="totallyTimeSpent" value="199912000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2301" y="118" width="1680" height="1861" extended-state="0" />
-    <editor active="true" />
+    <frame x="45" y="54" width="1747" height="2036" extended-state="0" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27787307" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15232164" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23206751" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24890283" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24518687" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1795017" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15062287" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" order="0" />
+      <window_info id="UI Designer" order="1" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.24105571" />
+      <window_info id="Maven Projects" order="4" weight="0.18713789" />
+      <window_info id="Structure" order="5" weight="0.24890283" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.14956012" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16820988" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.24382716" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.1795017" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Designer" order="1" />
+      <window_info anchor="right" auto_hide="true" id="Database" internal_type="SLIDING" order="2" show_stripe_button="false" type="SLIDING" />
+      <window_info anchor="right" id="Commander" order="3" weight="0.4" />
+      <window_info anchor="right" id="Bean Validation" order="4" />
+      <window_info anchor="right" id="Ant Build" order="5" show_stripe_button="false" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="7" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3301246" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27899686" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15232164" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22445141" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902032" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24890283" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19139297" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" order="0" />
+      <window_info id="UI Designer" order="1" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.24105571" />
+      <window_info id="Maven Projects" order="4" weight="0.18713789" />
+      <window_info id="Structure" order="5" weight="0.24890283" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.14956012" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16846986" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.24382716" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.1795017" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Designer" order="1" />
+      <window_info anchor="right" auto_hide="true" id="Database" internal_type="SLIDING" order="2" show_stripe_button="false" type="SLIDING" />
+      <window_info anchor="right" id="Commander" order="3" weight="0.4" />
+      <window_info anchor="right" id="Bean Validation" order="4" />
+      <window_info anchor="right" id="Ant Build" order="5" show_stripe_button="false" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="7" />
     </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -993,9 +822,6 @@
       <collection />
     </option>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added copyrights everywhere" />
     <MESSAGE value="Added filter fnctioning for relationship querying on the beginning and ending nodes.  Main Tube1 program now minimizes segment creation by reusing whereever possible.  Added javadocs that were missing." />
@@ -1004,409 +830,465 @@
     <MESSAGE value="Best practice is for upper-case relationship labels" />
     <MESSAGE value="More updates, created queries" />
     <MESSAGE value="Changed so relationship to client - FILED -&gt; filings, which makes more sense from a left-to-right perspective, added some more queries" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed so relationship to client - FILED -&gt; filings, which makes more sense from a left-to-right perspective, added some more queries" />
+    <MESSAGE value="Changed to load all filings contained within zip file" />
+    <MESSAGE value="parse last name correctly" />
+    <MESSAGE value="more queries" />
+    <MESSAGE value="Documented query files a little better after confirming all queries worked as designed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Documented query files a little better after confirming all queries worked as designed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeBase.java</url>
-          <line>203</line>
+          <url>file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeViaApi.java</url>
+          <line>126</line>
           <properties />
-          <option name="timeStamp" value="106" />
+          <option name="timeStamp" value="183" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <condition expression="end == null" language="JAVA" custom="" />
           <url>file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeBase.java</url>
-          <line>207</line>
+          <line>109</line>
           <properties />
-          <option name="timeStamp" value="109" />
+          <option name="timeStamp" value="184" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/PublicFilingLoader.java</url>
-          <line>135</line>
+          <line>149</line>
           <properties />
-          <option name="timeStamp" value="161" />
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java</url>
+          <line>75</line>
+          <properties />
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java</url>
+          <line>109</line>
+          <properties />
+          <option name="timeStamp" value="199" />
         </line-breakpoint>
       </breakpoints>
-      <breakpoints-dialog>
-        <breakpoints-dialog />
-      </breakpoints-dialog>
-      <option name="time" value="170" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>session.queryForObject(Lobbyist.class, &quot;MATCH (l:Lobbyist {surname:$surname,firstName:$firstName}) RETURN l&quot;, params)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>session.queryForObject(Lobbyist.class, &quot;MATCH (l:Lobbyist {surname:$surname,firstName:'MARY'}) RETURN l&quot;, params)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>session.queryForObject(Lobbyist.class, &quot;MATCH (l:Lobbyist {surname:'BONO',firstName:'MARY'}) RETURN l&quot;, params)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>session.queryForObject(Lobbyist.class, &quot;MATCH (l:Lobbyist {surname:'BONO',firstName:$firstName}) RETURN l&quot;, params)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/ExpresswayRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/FreewayRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/LocalRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/PrimaryRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07767549">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/PrivateRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07767549">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/RampRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07767549">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/SecondaryRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07767549">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/UnknownRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07767549">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-victoria-inbound.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/queries.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/src.zip!/org/xml/sax/helpers/XMLFilterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state>
           <caret line="509" column="16" selection-start-line="509" selection-start-column="16" selection-end-line="509" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home/src.zip!/org/xml/sax/InputSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33275715">
+        <state>
           <caret line="83" column="13" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/filings/src/main/xsd/filings.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.961538">
+        <state>
           <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeViaFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8045977">
-          <caret line="93" column="41" selection-start-line="93" selection-start-column="41" selection-end-line="93" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/neo4j/neo4j-ogm-api/3.0.2/neo4j-ogm-api-3.0.2.jar!/org/neo4j/ogm/transaction/Transaction.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03506721">
+        <state>
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/neo4j/neo4j-ogm-core/3.0.2/neo4j-ogm-core-3.0.2-sources.jar!/org/neo4j/ogm/session/Session.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state>
           <caret line="556" column="13" selection-start-line="556" selection-start-column="13" selection-end-line="556" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/generated/FilingType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="259" column="23" selection-start-line="259" selection-start-column="23" selection-end-line="259" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/filings/src/main/java/generated/LobbyistType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state>
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/neo4j/neo4j-ogm-core/3.0.2/neo4j-ogm-core-3.0.2-sources.jar!/org/neo4j/ogm/session/Neo4jSession.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="450" column="0" selection-start-line="450" selection-start-column="0" selection-end-line="450" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/node/StopNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/generated/ClientType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/GovernmentEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Lobbyist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Registrant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/resources/2018_1_1_15.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="48" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="48" />
+        <state>
+          <caret line="450" selection-start-line="450" selection-end-line="450" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tflapi/src/main/java/uk/gov/tfl/api/client/client/api/LineApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.094827585">
+        <state>
           <caret line="50" column="46" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tflapi/src/main/java/uk/gov/tfl/api/client/client/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.060344826">
+        <state>
           <caret line="17" column="61" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tflapi/src/main/java/uk/gov/tfl/api/client/client/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.077586204">
+        <state>
           <caret line="54" column="54" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/MiscelaneousRoute.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state>
           <caret line="34" column="49" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/BaseRoute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="45" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/TruckRouteEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.060344826">
+        <state>
           <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/resources/traffic_volumes_rawdata.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/filter/RelationshipNodePropertyComparison.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/relationship/RouteSegmentBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state>
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/relationship/Segment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeViaApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="29" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/FilingIssue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/BaseRelationship.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state>
           <caret line="7" column="80" selection-start-line="7" selection-start-column="80" selection-end-line="7" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Filing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Issue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="32" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/node/LineNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/relationship/Route.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
+        <state>
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeBase.java">
+    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeViaFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="172" column="60" selection-start-line="172" selection-start-column="60" selection-end-line="172" selection-end-column="60" />
-          <folding />
+        <state>
+          <caret line="93" column="41" selection-start-line="93" selection-start-column="41" selection-end-line="93" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/BaseNode.java">
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/generated/FilingType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="116" selection-start-line="22" selection-start-column="116" selection-end-line="22" selection-end-column="116" />
-          <folding />
+        <state>
+          <caret line="259" column="23" selection-start-line="259" selection-start-column="23" selection-end-line="259" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Client.java">
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/generated/ClientType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="330" column="0" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
-          <folding />
+        <state>
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/PublicFilingLoader.java">
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/generated/LobbyistsType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-          <folding />
+        <state>
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java">
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/generated/IssueType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filings/queries.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="119" selection-start-line="8" selection-start-column="119" selection-end-line="8" selection-end-column="119" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traffic/queries.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-          <folding />
+        <state>
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/family.cypher">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41426927">
-          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
-          <folding />
+        <state>
+          <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traffic/queries.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="16" column="1" selection-start-line="16" selection-end-line="16" selection-end-column="131" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/filter/RelationshipNodePropertyComparison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/BaseRoute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="20" selection-start-line="15" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/LocalRoute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/traffic/relationship/ExpresswayRoute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/node/LineNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#1541#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#645#646#0" expanded="false" />
+            <element signature="e#670#671#0" expanded="false" />
+            <element signature="e#843#844#0" expanded="false" />
+            <element signature="e#875#876#0" expanded="false" />
+            <element signature="e#979#980#0" expanded="false" />
+            <element signature="e#1007#1008#0" expanded="false" />
+            <element signature="e#1100#1101#0" expanded="false" />
+            <element signature="e#1127#1128#0" expanded="false" />
+            <element signature="e#1233#1234#0" expanded="false" />
+            <element signature="e#1265#1266#0" expanded="false" />
+            <element signature="e#1478#1479#0" expanded="false" />
+            <element signature="e#1537#1538#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tflapi/.swagger-codegen/VERSION">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tflapi/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/src/main/resources/lineRouteSequence-waterloo-city-inbound.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeViaApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/TubeBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/relationship/Segment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/src/main/java/com/buddhadata/sandbox/neo4j/tfl/tube/node/StopNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/queries.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/GovernmentEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tfl/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Registrant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="213" column="68" selection-start-line="213" selection-start-column="68" selection-end-line="213" selection-end-column="68" />
+          <folding>
+            <element signature="e#4200#4201#0" expanded="true" />
+            <element signature="e#4230#4231#0" expanded="true" />
+            <element signature="e#4377#4378#0" expanded="true" />
+            <element signature="e#4415#4416#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Issue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="92" column="11" selection-start-line="92" selection-start-column="11" selection-end-line="92" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/relationship/FilingIssue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/BaseNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3675">
+          <caret line="291" selection-start-line="291" selection-end-line="291" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/neo4j/neo4j-ogm-core/3.2.0-RC1/neo4j-ogm-core-3.2.0-RC1.jar!/org/neo4j/ogm/annotation/NodeEntity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Lobbyist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+          <folding>
+            <element signature="e#4023#4024#0" expanded="true" />
+            <element signature="e#4055#4056#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
+            <element signature="e#4248#4249#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/node/Filing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4657#4658#0" expanded="true" />
+            <element signature="e#4686#4687#0" expanded="true" />
+            <element signature="e#4820#4821#0" expanded="true" />
+            <element signature="e#4856#4857#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/queries.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="6" selection-start-line="4" selection-end-line="4" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traffic/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traffic/src/main/resources/traffic_volumes_rawdata.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1325">
+          <caret line="1615" column="74" lean-forward="true" selection-start-line="1615" selection-start-column="74" selection-end-line="1615" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filings/src/main/java/com/buddhadata/sandbox/neo4j/filings/PublicFilingLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#16093#16094#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traffic/src/main/java/com/buddhadata/sandbox/neo4j/TrafficVolumeLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1069">
+          <caret line="111" column="37" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1474,11 +1356,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>neo4j</last-edited>
+          <last-edited>client</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

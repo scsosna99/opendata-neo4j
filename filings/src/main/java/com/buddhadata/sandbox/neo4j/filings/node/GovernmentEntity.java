@@ -14,7 +14,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
  * @author Scott C Sosna
  */
 @NodeEntity
-public class GovernmentEntity extends BaseNode {
+public class GovernmentEntity {
 
     /**
      * Internal Neo4J id of the node
@@ -67,5 +67,14 @@ public class GovernmentEntity extends BaseNode {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Normalize the string data provided in the source data file
+     * @param original original string to normalize
+     * @return normalized string
+     */
+    private String normalizeString (String original) {
+        return (original != null && !original.isEmpty()) ? original.trim().replace("\r\n", ", ").replace("\n", "  ") : null;
     }
 }

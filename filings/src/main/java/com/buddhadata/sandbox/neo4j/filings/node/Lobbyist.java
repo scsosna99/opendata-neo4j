@@ -8,14 +8,18 @@ import generated.CoveredEnum;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Node representing a lobbyist
  *
  * @author Scott C Sosna
  */
-@NodeEntity
-public class Lobbyist extends BaseNode {
+@NodeEntity("Lobbyist")
+public class Lobbyist {
 
     /**
      * Internal Neo4J id of the node
@@ -49,6 +53,11 @@ public class Lobbyist extends BaseNode {
      */
     private String surname;
 
+    /**
+     * The registrants who have hired this lobbyist
+     */
+    @Relationship(type = "EMPLOYED_BY")
+    private Set<Registrant> employers;
 
     /**
      * Constructor
@@ -69,6 +78,7 @@ public class Lobbyist extends BaseNode {
         this.govtPositionInd = (covered == CoveredEnum.COVERED);
         this.govtPositionDesc = normalizeString(govtPositionDesc);
         this.activityInfo = normalizeString(activityInfo);
+        this.employers = new HashSet<>();
     }
 
     /**
@@ -167,6 +177,23 @@ public class Lobbyist extends BaseNode {
         this.surname = surname;
     }
 
+    /**
+     * getter
+     * @return registrants who employee the lobbyist
+     */
+    public Set<Registrant> getEmployers() {
+        return employers;
+    }
+
+    /**
+     * setter
+     * @param employers collection of employers (registrants)
+     */
+    public void setEmployers(Set<Registrant> employers) {
+        this.employers = employers;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -184,5 +211,14 @@ public class Lobbyist extends BaseNode {
         int result = firstName != null ? firstName.hashCode() : 0;
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         return result;
+    }
+
+    /**
+     * Normalize the string data provided in the source data file
+     * @param original original string to normalize
+     * @return normalized string
+     */
+    private String normalizeString (String original) {
+        return (original != null && !original.isEmpty()) ? original.trim().replace("\r\n", ", ").replace("\n", "  ") : null;
     }
 }

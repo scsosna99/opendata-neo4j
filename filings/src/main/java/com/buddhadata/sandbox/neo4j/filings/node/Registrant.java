@@ -7,6 +7,10 @@ package com.buddhadata.sandbox.neo4j.filings.node;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Node representing a lobbying registrant
@@ -14,7 +18,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
  * @author Scott C Sosna
  */
 @NodeEntity
-public class Registrant extends BaseNode
+public class Registrant
     implements Comparable<Registrant> {
 
     /**
@@ -55,6 +59,12 @@ public class Registrant extends BaseNode
     private long registrantId;
 
     /**
+     * The clients which have engaged (hired) this registrant/lobbying firm
+     */
+    @Relationship(type="ENGAGED_BY")
+    private Set<Client> clients;
+
+    /**
      * Constructor
      * @param registrantId
      * @param name
@@ -76,6 +86,7 @@ public class Registrant extends BaseNode
         this.address = normalizeString (address);
         this.country = normalizeString(country);
         this.countryPBB = normalizeString (countryPBB);
+        this.clients = new HashSet<>();
     }
 
     /**
@@ -191,11 +202,36 @@ public class Registrant extends BaseNode
     }
 
     /**
+     * Getter
+     * @return set of clients who have engaged (hired) this registrant
+     */
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    /**
+     * setter
+     * @param clients collection of clients who have engaged (hired) this registrant
+     */
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
+    /**
      * Implement comparable for sorting the registrants
      * @param other other node used in comparison
      * @return -1, 0, 1 as with all comparables
      */
     public int compareTo (Registrant other) {
         return getName().compareTo(other.getName());
+    }
+
+    /**
+     * Normalize the string data provided in the source data file
+     * @param original original string to normalize
+     * @return normalized string
+     */
+    private String normalizeString (String original) {
+        return (original != null && !original.isEmpty()) ? original.trim().replace("\r\n", ", ").replace("\n", "  ") : null;
     }
 }
