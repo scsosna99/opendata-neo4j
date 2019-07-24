@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>DataViz</title>
+    <style type="text/css">
+        #viz {
+            width: 1750px;
+            height: 1750px;
+        }
+    </style>
+    <script src="https://rawgit.com/neo4j-contrib/neovis.js/master/dist/neovis.js"></script>
+</head>
+<script>
+    function draw() {
+        var config = {
+            container_id: "viz",
+            server_url: "bolt://localhost",
+            server_user: "neo4j",
+            server_password: "password",
+            labels: {
+                "Department": {
+                    caption: "name",
+                    community: "name"
+//                    ,sizeCypher: "MATCH (n) WHERE id(n) = {id} MATCH (n)-[]-(c) RETURN count(c)"
+                },
+                "Contract": {
+                    caption: false
+                },
+                "Vendor": {
+                    caption: "name"
+                }
+            },
+            relationships: {
+                "ADMINISTERS": {
+                    caption: "admins"
+                },
+                "AWARDED": {
+                    caption: "awarded"
+                }
+
+            },
+            initial_cypher: "MATCH p = (:Department)-[:ADMINISTERS]->(c:Contract)<-[:AWARDED]-(:Vendor) WHERE c.startedOn > '2019-01-01' return p"
+        }
+        var viz = new NeoVis.default(config);
+        viz.render();
+    }
+</script>
+<body onload="draw()">
+<div id="viz"></div>
+</body>
+</html>>
