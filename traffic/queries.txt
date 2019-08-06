@@ -1,3 +1,15 @@
+// Queries for CodeOne 2019 talk
+MATCH (s:StreetNode {streetName:'Queens Ave'}), (e:StreetNode {streetName:'Wharncliffe Rd N'}) , p = (s)-[*1..5]-(e) RETURN p
+MATCH (s:StreetNode {streetName:'Queens Ave'}), (e:StreetNode {streetName:'Wharncliffe Rd N'}) , p = (s)-[*1..5]->(e) RETURN p
+MATCH (s:StreetNode {streetName:'Queens Ave'}), (e:StreetNode {streetName:'Wharncliffe Rd N'}) , p = shortestPath((s)-[*1..5]-(e)) RETURN p
+MATCH (s:StreetNode {streetName:'Queens Ave'}), (e:StreetNode {streetName:'Wharncliffe Rd N'}) , p = shortestPath((s)-[*1..5]->(e)) RETURN p
+
+MATCH (s:StreetNode {streetName:'Preston St'}), (e:StreetNode {streetName:'Roxburgh Rd'}) , p = (s)-[*7..9]-(e) RETURN p
+MATCH (s:StreetNode {streetName:'Preston St'}), (e:StreetNode {streetName:'Roxburgh Rd'}) , p = (s)-[*7..9]->(e) RETURN p
+MATCH (s:StreetNode {streetName:'Preston St'}), (e:StreetNode {streetName:'Roxburgh Rd'}) , p = shortestPath ((s)-[*]-(e)) RETURN p
+MATCH (s:StreetNode {streetName:'Preston St'}), (e:StreetNode {streetName:'Roxburgh Rd'}) , p = shortestPath ((s)-[*]->(e)) RETURN p
+
+
 MATCH(n) RETURN (n)
 -shows multiple routes of different/same type between source/destination
 
