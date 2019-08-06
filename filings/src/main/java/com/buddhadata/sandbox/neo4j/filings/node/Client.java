@@ -4,10 +4,7 @@
 
 package com.buddhadata.sandbox.neo4j.filings.node;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +20,13 @@ public class Client {
     /**
      * Does the client file the disclosures themselves or through a separate registrant
      */
+    @Property
     private boolean selfFilerInd;
 
     /**
      * Is the client a state or local government entity?
      */
+    @Property
     private boolean stateLocalGovtInd;
 
     /**
@@ -40,41 +39,49 @@ public class Client {
     /**
      * government-issued unique identifier
      */
+    @Property
     private long clientId;
 
     /**
      * Who's the contact for this client
      */
+    @Property
     private String contactName;
 
     /**
      * client's country
      */
+    @Property
     private String country;
 
     /**
      * public-or-private body country
      */
+    @Property
     private String countryPPB;
 
     /**
      * General description of the client, e.g., type of business they're in
      */
+    @Property
     private String desc;
 
     /**
      * Client name
      */
+    @Property
     private String name;
 
     /**
      * Client's state, when applicable
      */
+    @Property
     private String state;
 
     /**
      * public-or-private body state of client, when applicable.
      */
+    @Property
     private String statePBB;
 
     /**

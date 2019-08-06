@@ -4,10 +4,7 @@
 
 package com.buddhadata.sandbox.neo4j.filings.node;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,31 +28,37 @@ public class Filing {
     /**
      * Date on which the filing was received.
      */
+    @Property
     private Date receivedOn;
 
     /**
      * The dollar amount of the filing.
      */
+    @Property
     private int amount;
 
     /**
      * The year of the filing
      */
+    @Property
     private int year;
 
     /**
      * Government-issued identifier for the filing
      */
+    @Property
     private String filingId;
 
     /**
      * The period represented by the filing.
      */
+    @Property
     private String period;
 
     /**
      * Type of filing
      */
+    @Property
     private String type;
 
     @Relationship (type="ON_BEHALF_OF")

@@ -4,10 +4,7 @@
 
 package com.buddhadata.sandbox.neo4j.filings.node;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,37 +28,43 @@ public class Registrant
     /**
      * Registrant's address
      */
+    @Property
     private String address;
 
     /**
      * Country in which registrant is located
      */
+    @Property
     private String country;
 
     /**
      * description of registrant business
      */
+    @Property
     private String description;
 
     /**
      * Registrant name
      */
+    @Property
     private String name;
 
     /**
      * country of public-or-private body
      */
+    @Property
     private String countryPBB;
 
     /**
      * government-generated ID of registrant
      */
+    @Property
     private long registrantId;
 
     /**
      * The clients which have engaged (hired) this registrant/lobbying firm
      */
-    @Relationship(type="ENGAGED_BY")
+    @Relationship(type="ENGAGES", direction="INCOMING")
     private Set<Client> clients;
 
     /**

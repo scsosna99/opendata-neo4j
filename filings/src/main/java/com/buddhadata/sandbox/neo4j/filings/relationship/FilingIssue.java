@@ -38,6 +38,7 @@ public class FilingIssue extends BaseRelationship {
     /**
      * Detailed description of issue for this filing
      */
+    @Property
     private String desc;
 
 

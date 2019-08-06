@@ -5,10 +5,7 @@
 package com.buddhadata.sandbox.neo4j.filings.node;
 
 import generated.CoveredEnum;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,32 +28,37 @@ public class Lobbyist {
     /**
      * Does the lobbyist hold a government position.
      */
+    @Property
     private boolean govtPositionInd;
 
     /**
      * Activity Information
      */
+    @Property
     private String activityInfo;
 
     /**
      * Lobbyist first name
      */
+    @Property
     private String firstName;
 
     /**
      * The lobbyist's government position, if applicable.
      */
+    @Property
     private String govtPositionDesc;
 
     /**
      * Lobbyist surname
      */
+    @Property
     private String surname;
 
     /**
      * The registrants who have hired this lobbyist
      */
-    @Relationship(type = "EMPLOYED_BY")
+    @Relationship(type = "EMPLOYS", direction = "INCOMING")
     private Set<Registrant> employers;
 
     /**

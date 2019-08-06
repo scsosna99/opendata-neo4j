@@ -1,0 +1,66 @@
+<!--
+  ~ Copyright (c) 2019  Scott C. Sosna  ALL RIGHTS RESERVED
+  -->
+
+<html>
+<head>
+    <title>DataViz</title>
+    <style type="text/css">
+        #viz {
+            width: 1750px;
+            height: 1750px;
+        }
+    </style>
+    <script src="https://rawgit.com/neo4j-contrib/neovis.js/master/dist/neovis.js"></script>
+</head>
+<script>
+    function draw() {
+        var config = {
+            container_id: "viz",
+            server_url: "bolt://localhost",
+            server_user: "neo4j",
+            server_password: "password",
+            labels: {
+                "Client": {
+                    caption: "name",
+                    community: "name"
+//                    ,sizeCypher: "MATCH (n) WHERE id(n) = {id} MATCH (n)-[]-(c) RETURN count(c)"
+                },
+                "Filing": {
+                    caption: false
+                },
+                "GovernmentEntity": {
+                    caption: "name"
+                },
+                "Issue": {
+                    caption: "code"
+                },
+                "Lobbyist": {
+                    caption: "surname"
+                },
+                "Registrant": {
+                    caption: "name"
+                }
+            },
+            relationships: {
+                "ADMINISTERS": {
+                    caption: "admins"
+                },
+                "AWARDED": {
+                    caption: "awarded"
+                }
+
+            },
+//            initial_cypher: "MATCH p = (:Client)-[:ENGAGES]->(r:Registrant)-[:EMPLOYS]->(:Lobbyist) return p LIMIT 15000"
+//            initial_cypher: "MATCH p = (:Registrant)-[:EMPLOYS]->(:Lobbyist)-[:ADVOCATING_FOR]->(:Filing)-[:ABOUT]->(:Issue) return p LIMIT 1000
+            initial_cypher: "MATCH p = (:Issue)--(:GovernmentEntity) return p LIMIT 1000"
+//            initial_cypher: "MATCH p = (:Issue {code:'CONSTITUTION'})<-[:ABOUT]-(:Filing)-[:TARGETED_AT]->(:GovernmentEntity) RETURN p LIMIT 10000"
+        }
+        var viz = new NeoVis.default(config);
+        viz.render();
+    }
+</script>
+<body onload="draw()">
+<div id="viz"></div>
+</body>
+</html>

@@ -7,6 +7,7 @@ package com.buddhadata.sandbox.neo4j.filings.node;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Property;
 
 /**
  * Node representing an issue being lobbied for
@@ -26,6 +27,7 @@ public class Issue {
     /**
      * general area of the issue, standardized for all issues across filings
      */
+    @Property
     private String code;
 
     /**

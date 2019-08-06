@@ -1,4 +1,16 @@
-MATCH (f:Filing) - [r] -> (g:GovernmentEntity) return g.name, count(f) order by count(f)
+NOTE: These queries are originally from a different schema and might need adjusting, haven't fixed all of them yet.
+
+//  Filings with less than n issues attached
+MATCH (g:GovernmentEntity)<-[]-(f:Filing)-[]->(i:Issue)
+WITH g, f, COUNT(i) AS cnt
+WHERE f.amount > 0 AND
+      cnt < 5
+MATCH p=(g)<-[r1]-(f)<-[r2]-(l:Lobbyist)<-[r3:EMPLOYS]-(r:Registrant)
+RETURN p LIMIT 2000
+
+
+
+MATCH (f:Filing) - [r] -> (g:GovernmentEntity) RETURN g.name, count(f) ORDER BY count(f) DESC
 
 MATCH (g:GovernmentEntity {name:"Office for Victims of Crime"}) RETURN g
 
@@ -24,3 +36,8 @@ MATCH (c:Client)-[:FILED]->(f:Filing)-[:LOBBIED_BY]->(l:Lobbyist) WITH c, f, COU
 MATCH (g1:GovernmentEntity)<-[:LOBBYING]-(f1:Filing)-[:LOBBYING]->(g2:GovernmentEntity) RETURN g1.name, g2.name, COUNT(f1) ORDER BY COUNT(f1) DESC, g1.name, g2.name
 
 MATCH (c:Client)-[:FILED]->(f:Filing)-[:LOBBYING]->(g:GovernmentEntity) WITH c, f, g ORDER BY g.name WITH c, f, COLLECT(g.name) AS Names RETURN c.name, Names, COUNT(f), SUM(f.amount) ORDER BY c.name, Names
+
+
+MATCH (c:Client)<-[:ON_BEHALF_OF]-(f:Filing)-[:TARGETED_AT]->(g:GovernmentEntity) WITH c, f, g ORDER BY g.name WITH c, f, COLLECT(g.name) AS Names RETURN c.name, Names, COUNT(f), SUM(f.amount) ORDER BY count(f) DESC
+
+

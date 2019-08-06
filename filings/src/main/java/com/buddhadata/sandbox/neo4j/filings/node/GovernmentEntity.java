@@ -7,6 +7,7 @@ package com.buddhadata.sandbox.neo4j.filings.node;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Property;
 
 /**
  * Node representing a government entity
@@ -26,6 +27,7 @@ public class GovernmentEntity {
     /**
      * Registrant name
      */
+    @Property
     private String name;
 
     /**
