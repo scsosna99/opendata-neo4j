@@ -102,7 +102,7 @@ abstract public class TubeBase {
                         System.out.println("Building route segments for " + line.getId());
                         buildSegment(line.getId(), Direction.Inbound, session);
 //                    buildSegment(line.getId(), Direction.Outbound, session);  // no need to do both inbound and outbound, just duplicates relationships
-                        buildRouteSequence(line.getId(), Direction.Inbound, session);
+//                    buildRouteSequence(line.getId(), Direction.Inbound, session);
 //                    buildRouteSequence (line.getId(), Direction.Outbound, session); // no need to do both inbound and outbound, just duplicates relationships
                     });
 
@@ -149,18 +149,18 @@ abstract public class TubeBase {
                     StopNode origin = findStopNode(session, section.getOriginator());
                     StopNode destination = findStopNode(session, section.getDestination());
 
-                    if (origin != null && destination != null) {
-                        //   Now create a route relationship between the two.
-                        Route route = new Route(line.getId(), section.getName(), origin, destination, Direction.getByCode(section.getDirection()),
-                                calcDistanceBetweenStops(session, origin, destination));
-
-                        //  Have we seen this exact route before?
-                        if (!cache.contains(route)) {
-                            // New route, so save to the database and place in cache.
-                            session.save(route);
-                            cache.add(route);
-                        }
-                    }
+//                    if (origin != null && destination != null) {
+//                        //   Now create a route relationship between the two.
+//                        Route route = new Route(line.getId(), section.getName(), origin, destination, Direction.getByCode(section.getDirection()),
+//                                calcDistanceBetweenStops(session, origin, destination));
+//
+//                        //  Have we seen this exact route before?
+//                        if (!cache.contains(route)) {
+//                            // New route, so save to the database and place in cache.
+//                            session.save(route);
+//                            cache.add(route);
+//                        }
+//                    }
                 });
             });
         } catch (Exception e) {
