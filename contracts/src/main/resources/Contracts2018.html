@@ -36,12 +36,20 @@
             },
             relationships: {
                 "ADMINISTERS": {
-                    caption: "admins"
+                    thickness: 0.50
                 },
                 "AWARDED": {
-                    caption: "awarded"
+                    thickness: 0.50
+                },
+                "HOW_OBTAINED": {
+                    thickness: 0.50
+                },
+                "IS_A": {
+                    thickness: 0.50
+                },
+                "LOCATED_IN": {
+                    thickness: 0.50
                 }
-
             },
             initial_cypher: "MATCH p = (:Department)-[:ADMINISTERS]->(c:Contract)<-[:AWARDED]-(:Vendor) WHERE c.startedOn > '2018-01-01' and c.startedOn < '2018-12-31' return p"
         }

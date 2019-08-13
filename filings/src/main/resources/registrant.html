@@ -44,13 +44,27 @@
                 }
             },
             relationships: {
-                "ADMINISTERS": {
-                    caption: "admins"
+                "ABOUT": {
+                    thickness: 0.50
                 },
-                "AWARDED": {
-                    caption: "awarded"
+                "ADVOCATING_FOR": {
+                    thickness: 0.50
+                },
+                "EMPLOYS": {
+                    thickness: 0.50
+                },
+                "ENGAGES": {
+                    thickness: 0.50
+                },
+                "FILED": {
+                    thickness: 0.50
+                },
+                "ON_BEHALF_OF": {
+                    thickness: 0.50
+                },
+                "TARGETED_AT": {
+                    thickness: 0.50
                 }
-
             },
             initial_cypher: "MATCH (r:Registrant) WITH r LIMIT 250 MATCH p = (:Client)-[:ENGAGES]->(r)-[:EMPLOYS]->(:Lobbyist) return p"
         }

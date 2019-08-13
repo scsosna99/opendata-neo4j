@@ -30,34 +30,44 @@
             },
             relationships: {
                 "ARTERIAL": {
-                    community: "arterial"
+                    community: "arterial",
+                    thickness: 0.50
                 },
                 "EXPRESSWAY": {
-                    community: "expressway"
+                    community: "expressway",
+                    thickness: 1.00
                 },
                 "FREEWAY": {
-                    community: "freeway"
+                    community: "freeway",
+                    thickness: 1.00
                 },
                 "LOCAL": {
-                    community: "local"
+                    community: "local",
+                    thickness: 0.25
                 },
                 "MISCELANEOUS": {
-                    community: "miscelaneous"
+                    community: "miscelaneous",
+                    thickness: 0.25
                 },
                 "PRIMARY": {
-                    community: "primary"
+                    community: "primary",
+                    thickness: 1.00
                 },
                 "PRIVATE": {
-                    community: "private"
+                    community: "private",
+                    thickness: 0.25
                 },
                 "RAMP": {
-                    community: "ramp"
+                    community: "ramp",
+                    thickness: 0.50
                 },
                 "SECONDARY": {
-                    community: "secondary"
+                    community: "secondary",
+                    thickness: 0.50
                 },
                 "UNKNOWN": {
-                    community: "unknown"
+                    community: "unknown",
+                    thickness: 0.25
                 }
             },
             initial_cypher: "MATCH p = ()-[r {truckRoute:'Daylight'}]->() RETURN p"
