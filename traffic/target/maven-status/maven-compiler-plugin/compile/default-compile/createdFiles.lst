@@ -1,8 +1,8 @@
 com/buddhadata/sandbox/neo4j/traffic/relationship/TruckRouteEnum.class
 com/buddhadata/sandbox/neo4j/traffic/relationship/BaseRoute.class
-com/buddhadata/sandbox/neo4j/traffic/node/StreetNode.class
 com/buddhadata/sandbox/neo4j/traffic/relationship/ArterialRoute.class
 com/buddhadata/sandbox/neo4j/traffic/relationship/RampRoute.class
+com/buddhadata/sandbox/neo4j/traffic/node/StreetNode.class
 com/buddhadata/sandbox/neo4j/traffic/relationship/UnknownRoute.class
 com/buddhadata/sandbox/neo4j/traffic/relationship/PrivateRoute.class
 com/buddhadata/sandbox/neo4j/traffic/relationship/MiscelaneousRoute.class

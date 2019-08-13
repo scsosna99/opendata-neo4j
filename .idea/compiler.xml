@@ -6,20 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="client" />
-        <module name="neo4j" />
         <module name="tfl" />
+        <module name="tfl2" />
+        <module name="neo4j" />
         <module name="traffic" />
+        <module name="client" />
         <module name="filings" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="client" target="11" />
-      <module name="filings" target="11" />
-      <module name="neo4j" target="1.5" />
-      <module name="tfl" target="11" />
+      <module name="tfl (1)" target="11" />
+      <module name="tfl-segment" target="11" />
       <module name="tflmsg" target="1.5" />
-      <module name="traffic" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -47,6 +47,7 @@
         <option value="$PROJECT_DIR$/tflapi/pom.xml" />
         <option value="$PROJECT_DIR$/tfl/pom.xml" />
         <option value="$PROJECT_DIR$/filings/pom.xml" />
+        <option value="$PROJECT_DIR$/tfl2/pom.xml" />
       </list>
     </option>
   </component>
