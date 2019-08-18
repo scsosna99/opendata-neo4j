@@ -4,11 +4,11 @@
 
 <html>
 <head>
-    <title>DataViz</title>
+    <title>Filings: Government Entities whose Filings are assigned to less than 5 issues</title>
     <style type="text/css">
         #viz {
-            width: 1750px;
-            height: 1750px;
+            width: 1932px;
+            height: 1244px;
         }
     </style>
     <script src="https://rawgit.com/neo4j-contrib/neovis.js/master/dist/neovis.js"></script>
@@ -41,12 +41,6 @@
                 },
                 "Registrant": {
                     caption: "name"
-                },
-                "from": {
-                    caption: "name"
-                },
-                "to": {
-                    caption: "name"
                 }
             },
             relationships: {
@@ -70,15 +64,14 @@
                 },
                 "TARGETED_AT": {
                     thickness: 0.50
-                },
-                "rel": {
-                    thickness: "filingCnt"
                 }
             },
-            initial_cypher: "MATCH p = (r:Registrant)--(f:Filing)--(g:GovernmentEntity {name:'Agriculture, Dept of (USDA)'})\n" +
-                "WITH p, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received\n" +
-                "WHERE received.months = 4 AND received.days >= 1 AND received.days <= 7 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'\n" +
-                "RETURN p"
+            initial_cypher: "MATCH (g:GovernmentEntity)<-[]-(f:Filing)-[]->(i:Issue) " +
+                "WITH g, f, COUNT(i) AS cnt " +
+                "WHERE f.amount > 0 AND " +
+                "      cnt < 5 " +
+                "MATCH p=(g)<-[r1]-(f)<-[r2]-(l:Lobbyist)<-[r3:EMPLOYS]-(r:Registrant) " +
+                "RETURN p LIMIT 2000"
         }
         var viz = new NeoVis.default(config);
         viz.render();

@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>DataViz</title>
+    <title>Filings: April 1 and 2, 2019</title>
     <style type="text/css">
         #viz {
             width: 1750px;
@@ -75,9 +75,13 @@
                     thickness: "filingCnt"
                 }
             },
-            initial_cypher: "MATCH p = (r:Registrant)--(f:Filing)--(g:GovernmentEntity {name:'Agriculture, Dept of (USDA)'})\n" +
-                "WITH p, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received\n" +
-                "WHERE received.months = 4 AND received.days >= 1 AND received.days <= 7 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'\n" +
+            // initial_cypher: "MATCH p = (r:Registrant)--(f:Filing)--(g:GovernmentEntity)\n" +
+            //     "WITH p, r, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received\n" +
+            //     "WHERE received.months = 4 AND received.days >= 1 AND received.days <= 2 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'\n" +
+            //     "RETURN p"
+            initial_cypher: "MATCH p = (r:Registrant)--(f:Filing)--(g:GovernmentEntity)\n" +
+            "WITH p, g, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received\n" +
+                "WHERE g.name = 'INTERNAL REVENUE SERVICE (IRS)' AND received.months = 4 AND received.days >= 1 AND received.days <= 2 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'\n" +
                 "RETURN p"
         }
         var viz = new NeoVis.default(config);

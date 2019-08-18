@@ -8,6 +8,53 @@ WHERE f.amount > 0 AND
 MATCH p=(g)<-[r1]-(f)<-[r2]-(l:Lobbyist)<-[r3:EMPLOYS]-(r:Registrant)
 RETURN p LIMIT 2000
 
+//  Filings by goverment entity by all dates currently loaded
+MATCH (f:Filing)--(g:GovernmentEntity)
+WITH f, g, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received
+RETURN g.name, COUNT(f) ORDER BY COUNT(f) DESC;
+
+//  Filings by government entity for specific date/date range
+MATCH (f:Filing)--(g:GovernmentEntity)
+WITH f, g, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received
+WHERE received.years = 2019 AND received.months = 4 AND received.days >= 1 AND received.days <= 7
+RETURN g.name, COUNT(f) ORDER BY COUNT(f) DESC;
+
+//  Registrants who've filed with government entity for specific date range, virtual nodes/relationships
+MATCH (r:Registrant)--(f:Filing)--(g:GovernmentEntity)
+WITH r, f, g, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received
+WHERE received.months = 4 AND received.days >= 1 AND received.days <= 2 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+WITH COLLECT(DISTINCT r.name) AS registrants,
+     COLLECT(DISTINCT g.name) AS gents
+WITH [gname IN gents | apoc.create.vNode(['gent'],{name:gname})] AS gNodes,
+     [rname in registrants | apoc.create.vNode(['Registrant'],{name:rname})] AS rNodes
+WITH apoc.map.groupBy(gNodes, 'name') AS gvs,
+     apoc.map.groupBy(rNodes, 'name') AS rvs
+MATCH (r:Registrant)--(f:Filing)--(g:GovernmentEntity)
+WITH gvs, rvs, r, f, g, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received
+WHERE received.months = 4 AND received.days >= 1 AND received.days <= 2 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+RETURN rvs,
+       gvs,
+       apoc.create.vRelationship (rvs[r.name], 'LOBBIED', {filingCnt:COUNT(f), filingAmt:SUM(f.amount)}, gvs[g.name]) AS rel
+
+
+//  Registrants who've filed with USDA, virtual nodes/relationshipse
+MATCH (r:Registrant)--(f:Filing)--(g:GovernmentEntity {name:'Agriculture, Dept of (USDA)'})
+WITH r, f, g, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received
+  WHERE received.months = 4 AND received.days >= 1 AND received.days <= 7
+WITH COLLECT(DISTINCT r.name) AS registrants,
+     COLLECT(DISTINCT g.name) AS gents
+WITH [gname IN gents | apoc.create.vNode(['gent'],{name:gname})] AS gNodes,
+     [rname in registrants | apoc.create.vNode(['Registrant'],{name:rname})] AS rNodes
+WITH apoc.map.groupBy(gNodes, 'name') AS gvs,
+     apoc.map.groupBy(rNodes, 'name') AS rvs
+MATCH (r:Registrant)--(f:Filing)--(g:GovernmentEntity {name:'Agriculture, Dept of (USDA)'})
+WITH gvs, rvs, r, f, g, apoc.date.fields(LEFT(f.receivedOn, 10), 'yyyy-MM-dd') AS received
+  WHERE received.months = 4 AND received.days >= 1 AND received.days <= 7
+RETURN rvs,
+       gvs,
+       apoc.create.vRelationship (rvs[r.name], 'LOBBIED', {filingCnt:COUNT(f), filingAmt:SUM(f.amount)}, gvs[g.name]) AS rel;
+
+
 
 
 MATCH (f:Filing) - [r] -> (g:GovernmentEntity) RETURN g.name, count(f) ORDER BY count(f) DESC
