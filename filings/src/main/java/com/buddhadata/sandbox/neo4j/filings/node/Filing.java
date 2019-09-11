@@ -71,9 +71,9 @@ public class Filing {
     private List<GovernmentEntity> entities;
 
     /**
-     * The specific lobbyists identified by the liling
+     * The specific lobbyists identified by the filing
      */
-    @Relationship(type = "ADVOCATING_FOR", direction="INCOMING")
+    @Relationship(type = "LOBBYING_FOR", direction="INCOMING")
     private List<Lobbyist> lobbyists;
 
     /**
