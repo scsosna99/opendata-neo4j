@@ -1,5 +1,178 @@
 NOTE: These queries are originally from a different schema and might need adjusting, haven't fixed all of them yet.
 
+// Distribution of how many government entities per filing
+MATCH (f:Filing)-[]-(g:GovernmentEntity)
+WITH f.filingId AS id,
+COUNT(g) AS cnt
+RETURN cnt, count(id)
+ORDER BY cnt
+
+//Filings and sums targeted by government entity
+MATCH (f:Filing)-[:TARGETED_AT]->(g:GovernmentEntity)
+RETURN g.name, COUNT(f), SUM(f.amount)
+ORDER BY COUNT(f) DESC
+LIMIT 25
+
+// What combinations of government agencies are most lobbied
+MATCH (f:Filing)-[:TARGETED_AT]-(g:GovernmentEntity)
+WHERE f.amount > 0
+WITH f, g ORDER BY g.name
+WITH f, COLLECT(DISTINCT g.name) AS gnames
+RETURN gnames, count(f)
+ORDER BY count(f) DESC
+LIMIT 30
+
+// What combinations of government agents are most lobbied, excluding House/Senate
+MATCH (f:Filing)-[]-(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+WITH f, g ORDER BY g.name
+WITH f, COLLECT(DISTINCT g.name) AS gnames
+RETURN gnames, count(f)
+ORDER BY count(f) DESC
+LIMIT 30
+
+// How many filings that are lobbying something other than the House/Senate
+MATCH (f:Filing)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'HOUSE OF REPRESENTATIVES' AND g.name <> 'SENATE'
+WITH f, count(g) AS cnt WHERE cnt > 0
+RETURN count(f)
+
+//  How many filings by client lobbying something other than House/Senate
+MATCH (c:Client)<-[]-(f:Filing)-[]-(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+WITH c, f, g ORDER BY g.name
+WITH c, f, COLLECT(DISTINCT g.name) AS gnames
+RETURN c.name, gnames, count(f)
+ORDER BY count(f) DESC
+LIMIT 30
+
+//  How many filings by client lobbying something other than House/Senate, by individual entity
+MATCH (c:Client)<-[:ON_BEHALF_OF]-(f:Filing)-[:TARGETED_AT]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+RETURN c.name, g.name, COUNT(f) AS cnt, SUM(f.amount) AS amount
+ORDER BY c.name, g.name, COUNT(f)
+LIMIT 30
+
+MATCH (c:Client)<-[:ON_BEHALF_OF]-(f:Filing)-[:TARGETED_AT]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+RETURN c.name, g.name, COUNT(f) AS cnt, SUM(f.amount) AS amount
+ORDER BY COUNT(f) DESC, SUM(f.amount) DESC, c.name
+LIMIT 75
+
+//  How many filings by client, by individual entity
+MATCH (c:Client)<-[]-(f:Filing)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0
+RETURN c.name, g.name, COUNT(f) AS cnt, SUM(f.amount) AS amount
+ORDER BY cnt DESC
+
+//  Sargento Distribution
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)-[:TARGETED_AT]-(g:GovernmentEntity)
+WITH f.filingId AS id, COUNT(g) AS cnt
+RETURN cnt, count(id)
+ORDER BY cnt
+
+//  How many Sargento filings by issue
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)-[]->(i:Issue)
+WHERE f.amount > 0
+RETURN i.code, COUNT(f) AS cnt, SUM(f.amount) AS amount
+ORDER BY cnt DESC, i.code
+LIMIT 30
+
+//  How are issues grouped for Sargento filings
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)-[]->(i:Issue)
+WHERE f.amount > 0
+WITH f, i ORDER BY i.code
+WITH f, COLLECT(DISTINCT i.code) AS iCodes
+RETURN iCodes, COUNT(f) AS cnt, SUM(f.amount) AS amount
+ORDER BY cnt DESC, iCodes
+LIMIT 30
+
+//  How many filings by Sargento by government entity, issue.
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+WITH c, f, g
+MATCH (f)-[]->(i:Issue)
+RETURN g.name, i.code, COUNT(f) AS cnt, SUM(f.amount) AS amount
+ORDER BY g.name, i.code
+
+
+//  How many filings by Sargento, issues by government entity
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+WITH c, f, g ORDER BY g.name
+WITH c, f, COLLECT(DISTINCT g.name) AS gnames
+MATCH (f)-[]->(i:Issue)
+WITH f, gnames, i ORDER BY i.code
+WITH f, gnames, COLLECT(DISTINCT i.code) AS icodes
+RETURN COUNT(f) AS cnt, SUM(f.amount), icodes, gnames AS amount
+ORDER BY cnt DESC, amount DESC, icodes, gnames
+LIMIT 10
+
+//  How does Sargento distribute their lobbying efforts
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)
+WITH c, f
+MATCH (c)-[]->(r:Registrant)-[]->(f)
+RETURN r.name, COUNT(f)
+ORDER BY COUNT(f) DESC
+
+// How does Sargento distribute their lobbying efforts by government entity
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)
+WITH c, f
+MATCH (c)-[]->(r:Registrant)-[]->(f)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+RETURN r.name, g.name, COUNT(f)
+ORDER BY r.name, g.name
+
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)
+WITH c, f
+MATCH (c)-[]->(r:Registrant)-[]->(f)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+RETURN g.name, r.name, COUNT(f)
+ORDER BY g.name, r.name
+
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)
+WITH c, f
+MATCH (c)-[]->(r:Registrant)-[]->(f)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+RETURN g.name, r.name, COUNT(f)
+ORDER BY COUNT(f) DESC
+
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)
+WITH c, f
+MATCH (c)-[]->(r:Registrant)-[]->(f)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+WITH f, g, r ORDER BY g.name
+WITH COLLECT(DISTINCT g.name) AS gnames, r, f
+RETURN r.name, gnames, COUNT(f)
+ORDER BY r.name, count(f)
+
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)
+WITH c, f
+MATCH (c)-[]->(r:Registrant)-[]->(f)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+WITH f, g, r ORDER BY g.name
+WITH COLLECT(DISTINCT g.name) AS gnames, r, f
+RETURN r.name, COUNT(f), COUNT(gnames)
+ORDER BY COUNT(gnames) DESC
+
+// Sargento filings per registrant
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)
+WITH c, f
+MATCH (c)-[]->(r:Registrant)-[]->(f)
+WHERE f.amount > 0
+RETURN r.name, COUNT(f), SUM(f.amount)
+ORDER BY SUM(f.amount) DESC
+LIMIT 30
+
+MATCH (c:Client {name:'Sargento Foods'})<-[]-(f:Filing)
+WITH c, f
+MATCH (c)-[]->(r:Registrant {name:'SAFER GVW, INC'})-[]->(f)-[]->(g:GovernmentEntity)
+WHERE f.amount > 0 AND g.name <> 'SENATE' AND g.name <> 'HOUSE OF REPRESENTATIVES'
+WITH r, f, g ORDER BY g.name
+WITH COLLECT(DISTINCT g.name) AS gnames, r, f
+RETURN gnames, COUNT(f)
+ORDER BY gnames
+
 //  Filings with less than n issues attached
 MATCH (g:GovernmentEntity)<-[]-(f:Filing)-[]->(i:Issue)
 WITH g, f, COUNT(i) AS cnt
